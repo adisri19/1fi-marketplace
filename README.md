@@ -3,8 +3,9 @@
 > A mobile-first, mutual fund-backed EMI marketplace built with 1Fi's design language, product architecture, and production engineering standards.
 
 ## 🔗 Quick Links
-- **Frontend Live Demo**: [Deploy URL]
-- **Backend API**: [API URL]
+- **Frontend Live Demo**: [1fi-marketplace-frontend.vercel.app](https://1fi-marketplace-frontend.vercel.app)
+- **Live Shop Page**: [1fi-marketplace-frontend.vercel.app/shop](https://1fi-marketplace-frontend.vercel.app/shop)
+- **Backend API**: [onefi-marketplace-backend.onrender.com](https://onefi-marketplace-backend.onrender.com)
 - **GitHub Repo**: [github.com/adisri19/1fi-marketplace](https://github.com/adisri19/1fi-marketplace)
 
 ---
