@@ -1,0 +1,19 @@
+{
+  "name": "1fi-marketplace",
+  "version": "1.0.0",
+  "private": true,
+  "description": "1Fi Marketplace — Full-stack Web Application",
+  "scripts": {
+    "dev": "concurrently -n \"API,WEB\" -c \"magenta,cyan\" \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\"",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "install:all": "npm install && npm --prefix backend install && npm --prefix frontend install",
+    "build": "npm --prefix frontend run build",
+    "seed": "npm --prefix backend run seed",
+    "prisma:generate": "npm --prefix backend run prisma:generate",
+    "prisma:migrate": "npm --prefix backend run prisma:migrate"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
