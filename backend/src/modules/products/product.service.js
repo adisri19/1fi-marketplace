@@ -1,7 +1,7 @@
 const repo = require('./product.repository');
 const AppError = require('../../utils/AppError');
 
-const getAllProducts = () => repo.findAll();
+const getAllProducts = (query = {}) => repo.findAll(query);
 
 const getProductBySlug = async (slug) => {
   if (!slug || typeof slug !== 'string')
