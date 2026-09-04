@@ -1,15 +1,55 @@
-import React, { useState } from 'react';
-import { useProducts } from '../../hooks/useProducts';
+import React, { useState, useEffect, useRef } from 'react';
+import { useInfiniteProducts } from '../../hooks/useProducts';
 import HeroBanner from './HeroBanner';
 import TabSwitcher from './TabSwitcher';
 import ProductCard from './ProductCard';
+import TopBrandsTab from './TopBrandsTab';
+import NearbyStoresTab from './NearbyStoresTab';
 import { ProductCardSkeleton } from '../../components/ui/Skeleton';
 import BottomNav from '../../components/layout/BottomNav';
-import { AlertCircle, RefreshCw, Sparkles, Store, Building2 } from 'lucide-react';
+import { AlertCircle, RefreshCw, Sparkles, Loader2 } from 'lucide-react';
 
 export default function ShopPage() {
   const [activeTab, setActiveTab] = useState('1fi-marketplace');
-  const { data: products, isLoading, isError, error, refetch } = useProducts();
+
+  const {
+    data,
+    isLoading,
+    isError,
+    error,
+    refetch,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useInfiniteProducts(12);
+
+  const allProducts = data?.pages?.flatMap((page) => page.data || []) || [];
+  const sentinelRef = useRef(null);
+
+  // Intersection Observer for infinite scrolling
+  useEffect(() => {
+    if (!hasNextPage || isFetchingNextPage || activeTab !== '1fi-marketplace') return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          fetchNextPage();
+        }
+      },
+      { threshold: 0.1, rootMargin: '200px' }
+    );
+
+    const currentSentinel = sentinelRef.current;
+    if (currentSentinel) {
+      observer.observe(currentSentinel);
+    }
+
+    return () => {
+      if (currentSentinel) {
+        observer.unobserve(currentSentinel);
+      }
+    };
+  }, [hasNextPage, isFetchingNextPage, fetchNextPage, activeTab]);
 
   return (
     <main className="min-h-screen pb-24 md:pb-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
@@ -19,43 +59,13 @@ export default function ShopPage() {
       {/* Pill Tab Switcher */}
       <TabSwitcher activeTab={activeTab} onTabChange={setActiveTab} />
 
-      {/* Tab Content */}
-      {activeTab === 'top-brands' && (
-        <div className="bg-white rounded-2xl p-12 text-center border border-[#E4E4E7] shadow-sm my-8">
-          <div className="w-16 h-16 bg-violet-100 text-[#4B1FD6] rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <Building2 className="w-8 h-8" />
-          </div>
-          <h2 className="text-xl font-bold text-zinc-900 mb-2">Top Brands Direct Stores</h2>
-          <p className="text-zinc-500 max-w-md mx-auto text-sm">
-            Exclusive tie-ups with Apple, Samsung, OnePlus, and more coming soon.
-          </p>
-          <button
-            onClick={() => setActiveTab('1fi-marketplace')}
-            className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 bg-[#4B1FD6] text-white text-sm font-semibold rounded-pill hover:bg-[#3B0764] transition-colors"
-          >
-            Explore 1Fi Marketplace
-          </button>
-        </div>
-      )}
+      {/* Tab 1: Top Brands Tab */}
+      {activeTab === 'top-brands' && <TopBrandsTab />}
 
-      {activeTab === 'nearby-stores' && (
-        <div className="bg-white rounded-2xl p-12 text-center border border-[#E4E4E7] shadow-sm my-8">
-          <div className="w-16 h-16 bg-violet-100 text-[#4B1FD6] rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <Store className="w-8 h-8" />
-          </div>
-          <h2 className="text-xl font-bold text-zinc-900 mb-2">Nearby Partner Retail Stores</h2>
-          <p className="text-zinc-500 max-w-md mx-auto text-sm">
-            Walk into partner electronic stores and scan QR to pay using your mutual funds.
-          </p>
-          <button
-            onClick={() => setActiveTab('1fi-marketplace')}
-            className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 bg-[#4B1FD6] text-white text-sm font-semibold rounded-pill hover:bg-[#3B0764] transition-colors"
-          >
-            Back to Marketplace
-          </button>
-        </div>
-      )}
+      {/* Tab 2: Nearby Stores Tab */}
+      {activeTab === 'nearby-stores' && <NearbyStoresTab />}
 
+      {/* Tab 3: 1Fi Marketplace Tab */}
       {activeTab === '1fi-marketplace' && (
         <section aria-labelledby="marketplace-heading" className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
@@ -68,14 +78,14 @@ export default function ShopPage() {
               </p>
             </div>
             <div className="text-xs font-semibold text-[#4B1FD6] bg-[#EDE9FE] px-3 py-1.5 rounded-pill self-start sm:self-auto">
-              ✦ Verified Genuine Devices
+              ✦ 50+ Verified Genuine Devices
             </div>
           </div>
 
-          {/* Loading Skeleton */}
+          {/* Initial Loading Skeleton */}
           {isLoading && (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[1, 2, 3].map((n) => (
+              {[1, 2, 3, 4, 5, 6].map((n) => (
                 <ProductCardSkeleton key={n} />
               ))}
             </div>
@@ -100,16 +110,33 @@ export default function ShopPage() {
           )}
 
           {/* Product Grid */}
-          {!isLoading && !isError && products && products.length > 0 && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {products.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
+          {!isLoading && !isError && allProducts.length > 0 && (
+            <div className="space-y-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {allProducts.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
+
+              {/* Sentinel element for infinite scroll */}
+              <div ref={sentinelRef} className="h-10 flex items-center justify-center">
+                {isFetchingNextPage && (
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-pill border border-[#E4E4E7] shadow-xs text-xs font-semibold text-[#4B1FD6]">
+                    <Loader2 className="w-4 h-4 animate-spin text-[#4B1FD6]" />
+                    <span>Loading more smartphone deals...</span>
+                  </div>
+                )}
+                {!hasNextPage && allProducts.length >= 12 && (
+                  <span className="text-xs text-zinc-400 font-medium">
+                    ✓ You have browsed all {allProducts.length} devices
+                  </span>
+                )}
+              </div>
             </div>
           )}
 
           {/* Empty state if no products */}
-          {!isLoading && !isError && (!products || products.length === 0) && (
+          {!isLoading && !isError && allProducts.length === 0 && (
             <div className="bg-white rounded-2xl p-12 text-center border border-[#E4E4E7] shadow-sm my-8">
               <p className="text-zinc-500 text-base">No smartphone plans currently available.</p>
             </div>

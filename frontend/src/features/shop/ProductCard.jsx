@@ -39,7 +39,7 @@ export default function ProductCard({ product }) {
         {/* Brand & Sold */}
         <div className="flex items-center justify-between gap-2 mb-1">
           <span className="text-xs text-[#71717A] uppercase font-semibold tracking-wider">
-            {product.brand}
+            {product.brand?.name || product.brand}
           </span>
           {totalSold > 0 && (
             <span className="inline-flex items-center text-[11px] font-semibold px-2 py-0.5 rounded-pill bg-orange-50 text-[#EA580C] border border-orange-100">

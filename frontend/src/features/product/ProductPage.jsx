@@ -141,7 +141,7 @@ export default function ProductPage() {
           <div>
             <div className="flex items-center justify-between gap-2 mb-1">
               <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest">
-                {product.brand}
+                {product.brand?.name || product.brand}
               </span>
               {product.badge && (
                 <Badge variant={product.badge.toLowerCase() === 'new' ? 'new' : 'hot'}>
