@@ -24,7 +24,7 @@ export default function ImageGallery({ mainImage, images = [], productName }) {
           className="w-full h-full object-contain transition-all duration-300"
           onError={(e) => {
             e.target.onerror = null;
-            e.target.src = `https://placehold.co/600x600/1a1a2e/ffffff?text=${encodeURIComponent(productName || 'Product')}`;
+            e.target.src = '/images/products/iphone-17-pro.webp';
           }}
         />
 
@@ -60,7 +60,7 @@ export default function ImageGallery({ mainImage, images = [], productName }) {
                   className="w-full h-full object-contain"
                   onError={(e) => {
                     e.target.onerror = null;
-                    e.target.src = `https://placehold.co/600x600/1a1a2e/ffffff?text=${encodeURIComponent(productName || 'Product')}`;
+                    e.target.src = '/images/products/iphone-17-pro.webp';
                   }}
                 />
               </button>

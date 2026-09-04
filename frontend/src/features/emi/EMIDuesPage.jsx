@@ -22,7 +22,7 @@ export default function EMIDuesPage() {
       id: 'due-1',
       productName: 'Apple iPhone 17 Pro',
       variantLabel: '256GB – Natural Titanium',
-      imageUrl: 'https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=600&h=600&fit=crop&q=80',
+      imageUrl: '/images/products/iphone-17-pro.webp',
       monthlyAmount: 11242,
       tenureMonths: 12,
       paidMonths: 4,
@@ -33,7 +33,7 @@ export default function EMIDuesPage() {
       id: 'due-2',
       productName: 'Samsung Galaxy S25 Ultra',
       variantLabel: '256GB – Titanium Black',
-      imageUrl: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=600&fit=crop&q=80',
+      imageUrl: '/images/products/samsung-s25-ultra.webp',
       monthlyAmount: 9999,
       tenureMonths: 6,
       paidMonths: 3,
@@ -47,7 +47,7 @@ export default function EMIDuesPage() {
       id: 'comp-1',
       productName: 'OnePlus 12',
       variantLabel: '256GB – Flowy Emerald',
-      imageUrl: 'https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=600&h=600&fit=crop&q=80',
+      imageUrl: '/images/products/oneplus-12.webp',
       totalPaid: 54999,
       tenureMonths: 12,
       closedDate: 'Aug 15, 2026',
@@ -56,7 +56,7 @@ export default function EMIDuesPage() {
       id: 'comp-2',
       productName: 'Google Pixel 8a',
       variantLabel: '128GB – Bay Blue',
-      imageUrl: 'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=600&h=600&fit=crop&q=80',
+      imageUrl: '/images/products/pixel-8a.png',
       totalPaid: 52999,
       tenureMonths: 6,
       closedDate: 'May 10, 2026',
@@ -129,7 +129,7 @@ export default function EMIDuesPage() {
                         className="max-h-full max-w-full object-contain"
                         onError={(e) => {
                           e.target.onerror = null;
-                          e.target.src = `https://placehold.co/600x600/1a1a2e/ffffff?text=${encodeURIComponent(due.productName)}`;
+                          e.target.src = '/images/products/iphone-17-pro.webp';
                         }}
                       />
                     </div>
@@ -230,7 +230,7 @@ export default function EMIDuesPage() {
                       className="max-h-full max-w-full object-contain"
                       onError={(e) => {
                         e.target.onerror = null;
-                        e.target.src = `https://placehold.co/600x600/1a1a2e/ffffff?text=${encodeURIComponent(comp.productName)}`;
+                        e.target.src = '/images/products/iphone-17-pro.webp';
                       }}
                     />
                   </div>

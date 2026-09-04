@@ -35,7 +35,7 @@ export default function ProductCard({ product }) {
             loading="lazy"
             onError={(e) => {
               e.target.onerror = null;
-              e.target.src = `https://placehold.co/600x600/1a1a2e/ffffff?text=${encodeURIComponent(product.name)}`;
+              e.target.src = '/images/products/iphone-17-pro.webp';
             }}
           />
         </div>

@@ -278,7 +278,7 @@ export default function HomePage() {
                       className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform"
                       onError={(e) => {
                         e.target.onerror = null;
-                        e.target.src = `https://placehold.co/600x600/1a1a2e/ffffff?text=${encodeURIComponent(p.name)}`;
+                        e.target.src = '/images/products/iphone-17-pro.webp';
                       }}
                     />
                   </div>

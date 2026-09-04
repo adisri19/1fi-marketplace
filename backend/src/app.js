@@ -5,6 +5,8 @@ const brandRoutes = require('./modules/brands/brand.routes');
 const errorHandler = require('./middleware/errorHandler');
 const notFound = require('./middleware/notFound');
 
+const path = require('path');
+
 const app = express();
 
 app.use(cors({
@@ -12,6 +14,7 @@ app.use(cors({
   methods: ['GET'],
 }));
 app.use(express.json());
+app.use('/images', express.static(path.join(__dirname, '../../frontend/public/images')));
 
 app.get('/health', (_, res) => res.json({ status: 'ok', ts: Date.now() }));
 app.use('/api/products', productRoutes);

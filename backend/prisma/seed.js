@@ -44,127 +44,75 @@ const BRANDS_DATA = [
 
 
 const IMAGES = {
-  // ── APPLE ─────────────────────────────────────────────────────────
-  'iphone-17-pro':
-    'https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=600&h=600&fit=crop&q=80',
-  'iphone-17-pro-max':
-    'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=600&h=600&fit=crop&q=80',
-  'iphone-17':
-    'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600&h=600&fit=crop&q=80',
-  'iphone-16':
-    'https://images.unsplash.com/photo-1667372399569-c65d2f539c8f?w=600&h=600&fit=crop&q=80',
-  'iphone-16-plus':
-    'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&h=600&fit=crop&q=80',
-  'iphone-15':
-    'https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&h=600&fit=crop&q=80',
-  'iphone-se-4':
-    'https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=600&h=600&fit=crop&q=80',
-  'ipad-air-m3':
-    'https://images.unsplash.com/photo-1544244015-0df4592c73a5?w=600&h=600&fit=crop&q=80',
+  // ── APPLE (8) ──────────────────────────────────────────────────────
+  'iphone-17-pro': '/images/products/iphone-17-pro.webp',
+  'iphone-17-pro-max': '/images/products/iphone-17-pro-max.webp',
+  'iphone-17': '/images/products/iphone-17.webp',
+  'iphone-16': '/images/products/iphone-16.webp',
+  'iphone-16-plus': '/images/products/iphone-16-plus.webp',
+  'iphone-15': '/images/products/iphone-15.webp',
+  'iphone-se-4': '/images/products/iphone-se-4.webp',
+  'ipad-air-m3': '/images/products/ipad-air-m3.webp',
 
-  // ── SAMSUNG ───────────────────────────────────────────────────────
-  'samsung-s25-ultra':
-    'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=600&fit=crop&q=80',
-  'samsung-s25-plus':
-    'https://images.unsplash.com/photo-1546054454-aa26e2b734c7?w=600&h=600&fit=crop&q=80',
-  'samsung-s25':
-    'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=600&h=600&fit=crop&q=80',
-  'samsung-z-fold-7':
-    'https://images.unsplash.com/photo-1587840171670-8b850147754e?w=600&h=600&fit=crop&q=80',
-  'samsung-z-flip-7':
-    'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&h=600&fit=crop&q=80',
-  'samsung-a56':
-    'https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=600&h=600&fit=crop&q=80',
-  'samsung-a36':
-    'https://images.unsplash.com/photo-1551355738-a8b2f1da7e60?w=600&h=600&fit=crop&q=80',
-  'samsung-m55':
-    'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=600&fit=crop&q=80',
-  'samsung-s24-fe':
-    'https://images.unsplash.com/photo-1575695342520-ace5e0c2e41f?w=600&h=600&fit=crop&q=80',
-  'samsung-tab-s10':
-    'https://images.unsplash.com/photo-1561154464-82e9adf32764?w=600&h=600&fit=crop&q=80',
+  // ── SAMSUNG (10) ───────────────────────────────────────────────────
+  'samsung-s25-ultra': '/images/products/samsung-s25-ultra.webp',
+  'samsung-s25-plus': '/images/products/samsung-s25-plus.webp',
+  'samsung-s25': '/images/products/samsung-s25.webp',
+  'samsung-z-fold-7': '/images/products/samsung-z-fold-7.jpg',
+  'samsung-z-flip-7': '/images/products/samsung-z-flip-7.jpg',
+  'samsung-a56': '/images/products/samsung-a56.webp',
+  'samsung-a36': '/images/products/samsung-a36.webp',
+  'samsung-m55': '/images/products/samsung-m55.webp',
+  'samsung-s24-fe': '/images/products/samsung-s24-fe.webp',
+  'samsung-tab-s10': '/images/products/samsung-tab-s10.webp',
 
-  // ── ONEPLUS ───────────────────────────────────────────────────────
-  'oneplus-13':
-    'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=600&h=600&fit=crop&q=80',
-  'oneplus-13r':
-    'https://images.unsplash.com/photo-1512054502232-10a0a035d672?w=600&h=600&fit=crop&q=80',
-  'oneplus-nord-4':
-    'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=600&h=600&fit=crop&q=80',
-  'oneplus-open-2':
-    'https://images.unsplash.com/photo-1587840171670-8b850147754e?w=600&h=600&fit=crop&q=80',
-  'oneplus-12':
-    'https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=600&h=600&fit=crop&q=80',
-  'oneplus-nord-ce-4':
-    'https://images.unsplash.com/photo-1556656793-08538906a9f8?w=600&h=600&fit=crop&q=80',
+  // ── ONEPLUS (6) ───────────────────────────────────────────────────
+  'oneplus-13': '/images/products/oneplus-13.jpg',
+  'oneplus-13r': '/images/products/oneplus-13r.jpg',
+  'oneplus-nord-4': '/images/products/oneplus-nord-4.webp',
+  'oneplus-open-2': '/images/products/oneplus-open-2.jpg',
+  'oneplus-12': '/images/products/oneplus-12.webp',
+  'oneplus-nord-ce-4': '/images/products/oneplus-nord-ce-4.webp',
 
-  // ── GOOGLE PIXEL ──────────────────────────────────────────────────
-  'pixel-9-pro-xl':
-    'https://images.unsplash.com/photo-1573849963705-b68d10e90db2?w=600&h=600&fit=crop&q=80',
-  'pixel-9-pro':
-    'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=600&fit=crop&q=80',
-  'pixel-9':
-    'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-  'pixel-9-pro-fold':
-    'https://images.unsplash.com/photo-1587840171670-8b850147754e?w=600&h=600&fit=crop&q=80',
-  'pixel-8a':
-    'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=600&h=600&fit=crop&q=80',
+  // ── GOOGLE PIXEL (5) ──────────────────────────────────────────────
+  'pixel-9-pro-xl': '/images/products/pixel-9-pro-xl.png',
+  'pixel-9-pro': '/images/products/pixel-9-pro.png',
+  'pixel-9': '/images/products/pixel-9.png',
+  'pixel-9-pro-fold': '/images/products/pixel-9-pro-fold.png',
+  'pixel-8a': '/images/products/pixel-8a.png',
 
-  // ── XIAOMI / REDMI / POCO ─────────────────────────────────────────
-  'xiaomi-15-ultra':
-    'https://images.unsplash.com/photo-1619895862022-09114b41f16f?w=600&h=600&fit=crop&q=80',
-  'xiaomi-14':
-    'https://images.unsplash.com/photo-1580910051074-3eb694886505?w=600&h=600&fit=crop&q=80',
-  'redmi-note-14-pro':
-    'https://images.unsplash.com/photo-1567581935884-3349723552ca?w=600&h=600&fit=crop&q=80',
-  'redmi-note-14':
-    'https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=600&h=600&fit=crop&q=80',
-  'poco-x7-pro':
-    'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&h=600&fit=crop&q=80',
-  'poco-f7-pro':
-    'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600&h=600&fit=crop&q=80',
+  // ── XIAOMI / REDMI / POCO (6) ─────────────────────────────────────
+  'xiaomi-15-ultra': '/images/products/xiaomi-15-ultra.jpg',
+  'xiaomi-14': '/images/products/xiaomi-14.jpg',
+  'redmi-note-14-pro': '/images/products/redmi-note-14-pro.jpg',
+  'redmi-note-14': '/images/products/redmi-note-14.jpg',
+  'poco-x7-pro': '/images/products/poco-x7-pro.webp',
+  'poco-f7-pro': '/images/products/poco-f7-pro.webp',
 
-  // ── VIVO / IQOO ───────────────────────────────────────────────────
-  'vivo-x200-pro':
-    'https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=600&h=600&fit=crop&q=80',
-  'vivo-v50':
-    'https://images.unsplash.com/photo-1556656793-08538906a9f8?w=600&h=600&fit=crop&q=80',
-  'iqoo-13':
-    'https://images.unsplash.com/photo-1512054502232-10a0a035d672?w=600&h=600&fit=crop&q=80',
-  'iqoo-neo-10':
-    'https://images.unsplash.com/photo-1551355738-a8b2f1da7e60?w=600&h=600&fit=crop&q=80',
-  'vivo-y300-plus':
-    'https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=600&h=600&fit=crop&q=80',
+  // ── VIVO / IQOO (5) ───────────────────────────────────────────────
+  'vivo-x200-pro': '/images/products/vivo-x200-pro.webp',
+  'vivo-v50': '/images/products/vivo-v50.webp',
+  'vivo-y300-plus': '/images/products/vivo-y300-plus.webp',
+  'iqoo-13': '/images/products/iqoo-13.webp',
+  'iqoo-neo-10': '/images/products/iqoo-neo-10.webp',
 
-  // ── OPPO / REALME ─────────────────────────────────────────────────
-  'oppo-find-x8-pro':
-    'https://images.unsplash.com/photo-1575695342520-ace5e0c2e41f?w=600&h=600&fit=crop&q=80',
-  'oppo-reno-13-pro':
-    'https://images.unsplash.com/photo-1567581935884-3349723552ca?w=600&h=600&fit=crop&q=80',
-  'realme-gt-7-pro':
-    'https://images.unsplash.com/photo-1619895862022-09114b41f16f?w=600&h=600&fit=crop&q=80',
-  'realme-14x':
-    'https://images.unsplash.com/photo-1580910051074-3eb694886505?w=600&h=600&fit=crop&q=80',
-  'oppo-a3-pro':
-    'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=600&h=600&fit=crop&q=80',
+  // ── OPPO / REALME (5) ─────────────────────────────────────────────
+  'oppo-find-x8-pro': '/images/products/oppo-find-x8-pro.webp',
+  'oppo-reno-13-pro': '/images/products/oppo-reno-13-pro.webp',
+  'oppo-a3-pro': '/images/products/oppo-a3-pro.webp',
+  'realme-gt-7-pro': '/images/products/realme-gt-7-pro.webp',
+  'realme-14x': '/images/products/realme-14x.webp',
 
-  // ── MOTOROLA / NOTHING / ASUS ─────────────────────────────────────
-  'motorola-edge-50-ultra':
-    'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&h=600&fit=crop&q=80',
-  'motorola-razr-50':
-    'https://images.unsplash.com/photo-1546054454-aa26e2b734c7?w=600&h=600&fit=crop&q=80',
-  'nothing-phone-3':
-    'https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=600&h=600&fit=crop&q=80',
-  'nothing-phone-2a-plus':
-    'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=600&h=600&fit=crop&q=80',
-  'asus-rog-phone-9':
-    'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=600&fit=crop&q=80',
+  // ── MOTOROLA / NOTHING / ASUS (5) ─────────────────────────────────
+  'motorola-edge-50-ultra': '/images/products/motorola-edge-50-ultra.webp',
+  'motorola-razr-50': '/images/products/motorola-razr-50.jpg',
+  'nothing-phone-3': '/images/products/nothing-phone-3.png',
+  'nothing-phone-2a-plus': '/images/products/nothing-phone-2a-plus.jpg',
+  'asus-rog-phone-9': '/images/products/asus-rog-phone-9.png',
 };
 
-// Helper to get image with placehold.co fallback:
-const img = (slug, bgColor = '1a1a2e', textColor = 'ffffff') =>
-  IMAGES[slug] ||
-  `https://placehold.co/600x600/${bgColor}/${textColor}?text=${encodeURIComponent(slug)}`;
+// Helper to get verified local product image:
+const img = (slug) => IMAGES[slug] || `/images/products/${slug}.webp`;
 
 // Verified real phone image sources
 const PHONE_SPECS = [
@@ -837,7 +785,6 @@ async function main() {
               imageUrl: img(p.slug),
               images: [
                 img(p.slug),
-                `https://placehold.co/600x600/1a1a2e/ffffff?text=${encodeURIComponent(p.name)}`,
               ],
               emiPlans: {
                 create: emiPlansData,
