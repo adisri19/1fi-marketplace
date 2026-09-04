@@ -6,17 +6,17 @@ A full-stack web application replicating the web version of **1Fi's Shop tab** (
 
 ## 🌟 Features
 
-- **Mutual-Fund-Backed EMIs**: 0% interest and low-cost EMI plans without credit checks, backed by user mutual fund holdings.
+- **50+ Real Smartphone Models**: Apple, Samsung, OnePlus, Google, Xiaomi, vivo, iQOO, OPPO, Realme, Motorola, Nothing, and ASUS with verified high-res GSMArena & Unsplash images.
+- **Brand Directory & Top Brands Tab**: Filterable brand catalog with Clearbit logos, product counts, and dedicated brand store pages (`/brands/:brandId`).
+- **Geolocation & Nearby Stores**: Browser Geolocation integration with OpenStreetMap Overpass API, radius filters (2km, 5km, 10km), distance calculation, and direct directions/calling.
+- **Mutual-Fund-Backed EMIs**: 0% interest and flexible 3 to 60 month plans backed by user mutual fund investments.
+- **Complete App Navigation**:
+  - **Home (`/home`)**: Credit limit utilization, active EMI progress cards, featured deals, and SIP growth insight.
+  - **EMI Dues (`/emi-dues`)**: Outstanding balance, auto-debit schedule, and collapsible completed loans.
+  - **Limit (`/limit`)**: Custom pure SVG circular progress gauge, breakdown metrics, and 4-step security explanation.
+  - **Profile (`/profile`)**: User information, verified KYC badge, pledged mutual funds, and settings.
 - **1Fi Visual Identity**: Deep violet accents (`#4B1FD6`), faint violet background (`#F5F3FF`), custom typography (`DM Sans`), rounded cards (`16px`), and pill badges.
-- **Interactive Shop Tab**: Pill tab switcher ("Top Brands", "Nearby Stores", "1Fi Marketplace") with hero banner and smartphone card grid.
-- **Product Details & EMI Calculator**:
-  - Image gallery with interactive thumbnails and rating badge.
-  - Interactive variant selector: color swatches and storage pills.
-  - Snapmint-style "Pay only ₹X now" benefit callout.
-  - Radio-card style EMI tenure selection (3 to 60 months) with 0% EMI badges, cashback tags, and recommended plan badges.
-  - Sticky bottom proceed bar on mobile, full-width button on desktop.
-  - Interactive toast confirmation upon tenure selection.
-- **Resilient UX**: Shape-matched skeletons for loading states and inline error states with retry buttons.
+- **Infinite Scroll & Skeletons**: Seamless continuous streaming on the marketplace grid with shape-matched skeleton loaders.
 
 ---
 
@@ -33,7 +33,7 @@ Request → Route → Controller → Service → Repository → Prisma → Postg
 - **Global Error Handling**: Centralized error middleware with standardized JSON outputs.
 
 The frontend follows container & pure component separation:
-- **State Management**: TanStack Query v5 for server cache and Zustand for client-side variant and EMI tenure selection.
+- **State Management**: TanStack Query v5 for server cache and Zustand for client-side variant, EMI selection, and geolocation.
 - **API Layer**: Centralized Axios client (`src/services/api.js`).
 
 ---
@@ -41,11 +41,22 @@ The frontend follows container & pure component separation:
 ## 🗄️ Database Schema
 
 ```prisma
+model Brand {
+  id        String    @id @default(cuid())
+  name      String    @unique // "Apple", "Samsung", etc.
+  logoUrl   String            // brand logo image URL
+  tagline   String            // "No-cost EMIs upto 24 months"
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
 model Product {
   id        String    @id @default(cuid())
   name      String                          // "Apple iPhone 17 Pro"
   slug      String    @unique               // "iphone-17-pro"
-  brand     String                          // "Apple"
+  brandId   String
+  brand     Brand     @relation(fields: [brandId], references: [id], onDelete: Cascade)
   category  String    @default("smartphone")
   badge     String?                         // "NEW" or "HOT"
   variants  Variant[]
@@ -53,6 +64,7 @@ model Product {
   updatedAt DateTime  @updatedAt
 
   @@index([slug])
+  @@index([brandId])
 }
 
 model Variant {
