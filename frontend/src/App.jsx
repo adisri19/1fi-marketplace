@@ -50,31 +50,25 @@ export default function App() {
         <Route
           path="/shop"
           element={
-            <ProtectedRoute>
-              <AppLayout>
-                <ShopPage />
-              </AppLayout>
-            </ProtectedRoute>
+            <AppLayout>
+              <ShopPage />
+            </AppLayout>
           }
         />
         <Route
           path="/products/:slug"
           element={
-            <ProtectedRoute>
-              <AppLayout>
-                <ProductPage />
-              </AppLayout>
-            </ProtectedRoute>
+            <AppLayout>
+              <ProductPage />
+            </AppLayout>
           }
         />
         <Route
           path="/brands/:brandId"
           element={
-            <ProtectedRoute>
-              <AppLayout>
-                <BrandProductsPage />
-              </AppLayout>
-            </ProtectedRoute>
+            <AppLayout>
+              <BrandProductsPage />
+            </AppLayout>
           }
         />
         <Route
