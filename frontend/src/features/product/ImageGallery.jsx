@@ -22,6 +22,10 @@ export default function ImageGallery({ mainImage, images = [], productName }) {
           src={selectedImage || mainImage}
           alt={productName}
           className="w-full h-full object-contain transition-all duration-300"
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = `https://placehold.co/600x600/1a1a2e/ffffff?text=${encodeURIComponent(productName || 'Product')}`;
+          }}
         />
 
         {/* Rating Badge */}
@@ -54,6 +58,10 @@ export default function ImageGallery({ mainImage, images = [], productName }) {
                   src={img}
                   alt={`Thumbnail ${idx + 1}`}
                   className="w-full h-full object-contain"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = `https://placehold.co/600x600/1a1a2e/ffffff?text=${encodeURIComponent(productName || 'Product')}`;
+                  }}
                 />
               </button>
             );

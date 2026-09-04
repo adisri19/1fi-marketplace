@@ -42,6 +42,130 @@ const BRANDS_DATA = [
   { name: 'ASUS', logoUrl: 'https://logo.clearbit.com/asus.com', tagline: 'Ultimate ROG gaming phones on EMI' },
 ];
 
+
+const IMAGES = {
+  // ── APPLE ─────────────────────────────────────────────────────────
+  'iphone-17-pro':
+    'https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=600&h=600&fit=crop&q=80',
+  'iphone-17-pro-max':
+    'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=600&h=600&fit=crop&q=80',
+  'iphone-17':
+    'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600&h=600&fit=crop&q=80',
+  'iphone-16':
+    'https://images.unsplash.com/photo-1667372399569-c65d2f539c8f?w=600&h=600&fit=crop&q=80',
+  'iphone-16-plus':
+    'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&h=600&fit=crop&q=80',
+  'iphone-15':
+    'https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&h=600&fit=crop&q=80',
+  'iphone-se-4':
+    'https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=600&h=600&fit=crop&q=80',
+  'ipad-air-m3':
+    'https://images.unsplash.com/photo-1544244015-0df4592c73a5?w=600&h=600&fit=crop&q=80',
+
+  // ── SAMSUNG ───────────────────────────────────────────────────────
+  'samsung-s25-ultra':
+    'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=600&fit=crop&q=80',
+  'samsung-s25-plus':
+    'https://images.unsplash.com/photo-1546054454-aa26e2b734c7?w=600&h=600&fit=crop&q=80',
+  'samsung-s25':
+    'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=600&h=600&fit=crop&q=80',
+  'samsung-z-fold-7':
+    'https://images.unsplash.com/photo-1587840171670-8b850147754e?w=600&h=600&fit=crop&q=80',
+  'samsung-z-flip-7':
+    'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&h=600&fit=crop&q=80',
+  'samsung-a56':
+    'https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=600&h=600&fit=crop&q=80',
+  'samsung-a36':
+    'https://images.unsplash.com/photo-1551355738-a8b2f1da7e60?w=600&h=600&fit=crop&q=80',
+  'samsung-m55':
+    'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=600&fit=crop&q=80',
+  'samsung-s24-fe':
+    'https://images.unsplash.com/photo-1575695342520-ace5e0c2e41f?w=600&h=600&fit=crop&q=80',
+  'samsung-tab-s10':
+    'https://images.unsplash.com/photo-1561154464-82e9adf32764?w=600&h=600&fit=crop&q=80',
+
+  // ── ONEPLUS ───────────────────────────────────────────────────────
+  'oneplus-13':
+    'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=600&h=600&fit=crop&q=80',
+  'oneplus-13r':
+    'https://images.unsplash.com/photo-1512054502232-10a0a035d672?w=600&h=600&fit=crop&q=80',
+  'oneplus-nord-4':
+    'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=600&h=600&fit=crop&q=80',
+  'oneplus-open-2':
+    'https://images.unsplash.com/photo-1587840171670-8b850147754e?w=600&h=600&fit=crop&q=80',
+  'oneplus-12':
+    'https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=600&h=600&fit=crop&q=80',
+  'oneplus-nord-ce-4':
+    'https://images.unsplash.com/photo-1556656793-08538906a9f8?w=600&h=600&fit=crop&q=80',
+
+  // ── GOOGLE PIXEL ──────────────────────────────────────────────────
+  'pixel-9-pro-xl':
+    'https://images.unsplash.com/photo-1573849963705-b68d10e90db2?w=600&h=600&fit=crop&q=80',
+  'pixel-9-pro':
+    'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=600&fit=crop&q=80',
+  'pixel-9':
+    'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
+  'pixel-9-pro-fold':
+    'https://images.unsplash.com/photo-1587840171670-8b850147754e?w=600&h=600&fit=crop&q=80',
+  'pixel-8a':
+    'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=600&h=600&fit=crop&q=80',
+
+  // ── XIAOMI / REDMI / POCO ─────────────────────────────────────────
+  'xiaomi-15-ultra':
+    'https://images.unsplash.com/photo-1619895862022-09114b41f16f?w=600&h=600&fit=crop&q=80',
+  'xiaomi-14':
+    'https://images.unsplash.com/photo-1580910051074-3eb694886505?w=600&h=600&fit=crop&q=80',
+  'redmi-note-14-pro':
+    'https://images.unsplash.com/photo-1567581935884-3349723552ca?w=600&h=600&fit=crop&q=80',
+  'redmi-note-14':
+    'https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=600&h=600&fit=crop&q=80',
+  'poco-x7-pro':
+    'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&h=600&fit=crop&q=80',
+  'poco-f7-pro':
+    'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600&h=600&fit=crop&q=80',
+
+  // ── VIVO / IQOO ───────────────────────────────────────────────────
+  'vivo-x200-pro':
+    'https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=600&h=600&fit=crop&q=80',
+  'vivo-v50':
+    'https://images.unsplash.com/photo-1556656793-08538906a9f8?w=600&h=600&fit=crop&q=80',
+  'iqoo-13':
+    'https://images.unsplash.com/photo-1512054502232-10a0a035d672?w=600&h=600&fit=crop&q=80',
+  'iqoo-neo-10':
+    'https://images.unsplash.com/photo-1551355738-a8b2f1da7e60?w=600&h=600&fit=crop&q=80',
+  'vivo-y300-plus':
+    'https://images.unsplash.com/photo-1555400038-63f5ba517a47?w=600&h=600&fit=crop&q=80',
+
+  // ── OPPO / REALME ─────────────────────────────────────────────────
+  'oppo-find-x8-pro':
+    'https://images.unsplash.com/photo-1575695342520-ace5e0c2e41f?w=600&h=600&fit=crop&q=80',
+  'oppo-reno-13-pro':
+    'https://images.unsplash.com/photo-1567581935884-3349723552ca?w=600&h=600&fit=crop&q=80',
+  'realme-gt-7-pro':
+    'https://images.unsplash.com/photo-1619895862022-09114b41f16f?w=600&h=600&fit=crop&q=80',
+  'realme-14x':
+    'https://images.unsplash.com/photo-1580910051074-3eb694886505?w=600&h=600&fit=crop&q=80',
+  'oppo-a3-pro':
+    'https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=600&h=600&fit=crop&q=80',
+
+  // ── MOTOROLA / NOTHING / ASUS ─────────────────────────────────────
+  'motorola-edge-50-ultra':
+    'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&h=600&fit=crop&q=80',
+  'motorola-razr-50':
+    'https://images.unsplash.com/photo-1546054454-aa26e2b734c7?w=600&h=600&fit=crop&q=80',
+  'nothing-phone-3':
+    'https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=600&h=600&fit=crop&q=80',
+  'nothing-phone-2a-plus':
+    'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=600&h=600&fit=crop&q=80',
+  'asus-rog-phone-9':
+    'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=600&fit=crop&q=80',
+};
+
+// Helper to get image with placehold.co fallback:
+const img = (slug, bgColor = '1a1a2e', textColor = 'ffffff') =>
+  IMAGES[slug] ||
+  `https://placehold.co/600x600/${bgColor}/${textColor}?text=${encodeURIComponent(slug)}`;
+
 // Verified real phone image sources
 const PHONE_SPECS = [
   // ─── APPLE (8 products) ──────────────────────────────────────────
@@ -56,12 +180,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Natural Titanium',
     colorHex: '#E8D5B7',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/apple-iphone-17-pro.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=600&h=600&fit=crop&q=80',
-    extraImages: [
-      'https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-17-pro-1.jpg',
-      'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=600&h=600&fit=crop&q=80',
-    ],
   },
   {
     brand: 'Apple',
@@ -74,11 +192,6 @@ const PHONE_SPECS = [
     storage: '512GB',
     color: 'Desert Titanium',
     colorHex: '#C4A882',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/apple-iphone-17-pro-max.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=600&h=600&fit=crop&q=80',
-    extraImages: [
-      'https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=600&h=600&fit=crop&q=80',
-    ],
   },
   {
     brand: 'Apple',
@@ -91,9 +204,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Ultramarine Blue',
     colorHex: '#38527C',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/apple-iphone-17.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Apple',
@@ -106,9 +216,6 @@ const PHONE_SPECS = [
     storage: '128GB',
     color: 'Teal Green',
     colorHex: '#4E7F78',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/apple-iphone-16.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Apple',
@@ -121,9 +228,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Pink Blush',
     colorHex: '#E9A6B2',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/apple-iphone-16-plus.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Apple',
@@ -136,9 +240,6 @@ const PHONE_SPECS = [
     storage: '128GB',
     color: 'Midnight Black',
     colorHex: '#1F2022',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/apple-iphone-15.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Apple',
@@ -151,9 +252,6 @@ const PHONE_SPECS = [
     storage: '128GB',
     color: 'Starlight White',
     colorHex: '#F0ECE4',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/apple-iphone-se-2022.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Apple',
@@ -166,9 +264,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Space Gray',
     colorHex: '#525458',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/apple-ipad-air-13-2024.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
 
   // ─── SAMSUNG (10 products) ───────────────────────────────────────
@@ -183,9 +278,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Titanium Black',
     colorHex: '#1C1C1E',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/samsung-galaxy-s25-ultra.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Samsung',
@@ -198,9 +290,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Cobalt Violet',
     colorHex: '#4C4066',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/samsung-galaxy-s25-plus.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Samsung',
@@ -213,9 +302,6 @@ const PHONE_SPECS = [
     storage: '128GB',
     color: 'Silver Shadow',
     colorHex: '#D1D2D6',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/samsung-galaxy-s25.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Samsung',
@@ -228,9 +314,6 @@ const PHONE_SPECS = [
     storage: '512GB',
     color: 'Crafted Black',
     colorHex: '#222224',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/samsung-galaxy-z-fold6.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Samsung',
@@ -243,9 +326,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Mint Green',
     colorHex: '#BCE3D1',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/samsung-galaxy-z-flip6.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Samsung',
@@ -258,9 +338,6 @@ const PHONE_SPECS = [
     storage: '128GB',
     color: 'Awesome Navy',
     colorHex: '#1B2C42',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/samsung-galaxy-a55.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Samsung',
@@ -273,9 +350,6 @@ const PHONE_SPECS = [
     storage: '128GB',
     color: 'Awesome Iceblue',
     colorHex: '#C5D8E8',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/samsung-galaxy-a35.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Samsung',
@@ -288,9 +362,6 @@ const PHONE_SPECS = [
     storage: '128GB',
     color: 'Denim Black',
     colorHex: '#2C343D',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/samsung-galaxy-m55.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Samsung',
@@ -303,9 +374,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Graphite',
     colorHex: '#3D3F42',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/samsung-galaxy-s24-fe.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Samsung',
@@ -318,9 +386,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Moonstone Gray',
     colorHex: '#73757C',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/samsung-galaxy-tab-s10-ultra.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
 
   // ─── ONEPLUS (6 products) ────────────────────────────────────────
@@ -335,9 +400,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Midnight Ocean',
     colorHex: '#1A3A5C',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/oneplus-13.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'OnePlus',
@@ -350,9 +412,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Astral Silver',
     colorHex: '#D5D7DF',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/oneplus-13r.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'OnePlus',
@@ -365,9 +424,6 @@ const PHONE_SPECS = [
     storage: '128GB',
     color: 'Mercurial Silver',
     colorHex: '#B5BAC2',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/oneplus-nord-4.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'OnePlus',
@@ -380,9 +436,6 @@ const PHONE_SPECS = [
     storage: '512GB',
     color: 'Emerald Dusk',
     colorHex: '#254E41',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/oneplus-open.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'OnePlus',
@@ -395,9 +448,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Flowy Emerald',
     colorHex: '#2B5549',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/oneplus-12.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'OnePlus',
@@ -410,9 +460,6 @@ const PHONE_SPECS = [
     storage: '128GB',
     color: 'Celadon Marble',
     colorHex: '#A2C6B6',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/oneplus-nord-ce4-5g.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
 
   // ─── GOOGLE (5 products) ─────────────────────────────────────────
@@ -427,9 +474,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Obsidian Black',
     colorHex: '#222325',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/google-pixel-9-pro-xl.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1573849963705-b68d10e90db2?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Google',
@@ -442,9 +486,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Hazel Porcelain',
     colorHex: '#7C827D',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/google-pixel-9-pro.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1573849963705-b68d10e90db2?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Google',
@@ -457,9 +498,6 @@ const PHONE_SPECS = [
     storage: '128GB',
     color: 'Rose Quartz',
     colorHex: '#E2B8BC',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/google-pixel-9.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1573849963705-b68d10e90db2?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Google',
@@ -472,9 +510,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Porcelain White',
     colorHex: '#EAE5DB',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/google-pixel-9-pro-fold.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1573849963705-b68d10e90db2?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Google',
@@ -487,9 +522,6 @@ const PHONE_SPECS = [
     storage: '128GB',
     color: 'Bay Blue',
     colorHex: '#80A8C9',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/google-pixel-8a.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1573849963705-b68d10e90db2?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
 
   // ─── XIAOMI / REDMI / POCO (6 products) ──────────────────────────
@@ -504,9 +536,6 @@ const PHONE_SPECS = [
     storage: '512GB',
     color: 'Ceramic White',
     colorHex: '#F6F6F6',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/xiaomi-14-ultra.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Xiaomi',
@@ -519,9 +548,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Jade Green',
     colorHex: '#4C655A',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/xiaomi-14.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Xiaomi',
@@ -534,9 +560,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Mirror Porcelain',
     colorHex: '#D8D9DE',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/xiaomi-redmi-note-14-pro-plus.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Xiaomi',
@@ -549,9 +572,6 @@ const PHONE_SPECS = [
     storage: '128GB',
     color: 'Phantom Blue',
     colorHex: '#2F4D6F',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/xiaomi-redmi-note-14.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Xiaomi',
@@ -564,9 +584,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'POCO Yellow',
     colorHex: '#FFC800',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/xiaomi-poco-x6-pro.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Xiaomi',
@@ -579,9 +596,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Titan Black',
     colorHex: '#1D1E20',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/xiaomi-poco-f6-pro.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
 
   // ─── VIVO / IQOO (5 products) ────────────────────────────────────
@@ -596,9 +610,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Titanium Blue',
     colorHex: '#35485E',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/vivo-x200-pro.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'vivo',
@@ -611,9 +622,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Sunset Blush',
     colorHex: '#E2978E',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/vivo-v40.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'iQOO',
@@ -626,9 +634,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Legend White',
     colorHex: '#FFFFFF',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/vivo-iqoo-13.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'iQOO',
@@ -641,9 +646,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Fiery Orange',
     colorHex: '#D94D26',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/vivo-iqoo-neo9.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'vivo',
@@ -656,9 +658,6 @@ const PHONE_SPECS = [
     storage: '128GB',
     color: 'Silk Green',
     colorHex: '#93B39E',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/vivo-y300-plus.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
 
   // ─── OPPO / REALME (5 products) ──────────────────────────────────
@@ -673,9 +672,6 @@ const PHONE_SPECS = [
     storage: '512GB',
     color: 'Space Black',
     colorHex: '#1B1C1E',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/oppo-find-x8-pro.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'OPPO',
@@ -688,9 +684,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Butterfly Purple',
     colorHex: '#846FA6',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/oppo-reno13-pro.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Realme',
@@ -703,9 +696,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Mars Orange',
     colorHex: '#D4532B',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/realme-gt7-pro.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Realme',
@@ -718,9 +708,6 @@ const PHONE_SPECS = [
     storage: '128GB',
     color: 'Crystal Black',
     colorHex: '#18191B',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/realme-14x.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'OPPO',
@@ -733,9 +720,6 @@ const PHONE_SPECS = [
     storage: '128GB',
     color: 'Starry Cream',
     colorHex: '#EAE1CE',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/oppo-a3-pro.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
 
   // ─── OTHERS: MOTOROLA, NOTHING, ASUS (5 products) ─────────────────
@@ -750,9 +734,6 @@ const PHONE_SPECS = [
     storage: '512GB',
     color: 'Nordic Wood',
     colorHex: '#9E7E63',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/motorola-edge-50-ultra.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Motorola',
@@ -765,9 +746,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Koala Grey',
     colorHex: '#676A70',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/motorola-razr-50.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Nothing',
@@ -780,9 +758,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Transparent White',
     colorHex: '#F0F0F0',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/nothing-phone-2.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'Nothing',
@@ -795,9 +770,6 @@ const PHONE_SPECS = [
     storage: '256GB',
     color: 'Metallic Grey',
     colorHex: '#4C4E52',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/nothing-phone-2a-plus.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
   {
     brand: 'ASUS',
@@ -810,9 +782,6 @@ const PHONE_SPECS = [
     storage: '512GB',
     color: 'Phantom Black',
     colorHex: '#141416',
-    imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/asus-rog-phone-9.jpg',
-    fallbackImg: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&h=600&fit=crop&q=80',
-    extraImages: [],
   },
 ];
 
@@ -865,12 +834,11 @@ async function main() {
               mrp: p.mrp,
               price: p.price,
               soldCount: p.soldCount,
-              imageUrl: p.imageUrl || p.fallbackImg,
+              imageUrl: img(p.slug),
               images: [
-                p.imageUrl || p.fallbackImg,
-                p.fallbackImg,
-                ...(p.extraImages || []),
-              ].filter(Boolean),
+                img(p.slug),
+                `https://placehold.co/600x600/1a1a2e/ffffff?text=${encodeURIComponent(p.name)}`,
+              ],
               emiPlans: {
                 create: emiPlansData,
               },

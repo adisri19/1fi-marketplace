@@ -112,7 +112,7 @@ export default function NearbyStoresTab() {
           }}
           className="mt-4 text-[#4B1FD6] text-xs font-semibold hover:underline"
         >
-          Use demo location instead
+          Use demo location (Bandra, Mumbai)
         </button>
       </div>
     );
@@ -224,12 +224,12 @@ export default function NearbyStoresTab() {
       {/* Loading skeletons */}
       {loading && (
         <div className="space-y-3">
-          <p className="text-xs font-medium text-zinc-400 animate-pulse">
-            Fetching mobile and electronics partner counters near you...
+          <p className="text-sm text-zinc-500 mb-4 animate-pulse">
+            🔍 Searching for mobile & electronics stores within {radius / 1000} km of your location...
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[1, 2, 3, 4].map((n) => (
-              <StoreSkeleton key={n} />
+            {[...Array(4)].map((_, i) => (
+              <StoreSkeleton key={i} />
             ))}
           </div>
         </div>
@@ -237,32 +237,55 @@ export default function NearbyStoresTab() {
 
       {/* Error */}
       {!loading && fetchError && (
-        <div className="text-center py-12 bg-white rounded-2xl border border-red-200">
+        <div className="text-center py-12 bg-white rounded-2xl border border-red-200 shadow-xs">
           <AlertCircle className="w-8 h-8 text-red-400 mx-auto mb-2" />
-          <p className="text-zinc-600 text-sm">{fetchError}</p>
-          <button
-            onClick={() => setUserCoords({ ...userCoords })}
-            className="mt-4 text-[#4B1FD6] font-semibold underline text-xs"
-          >
-            Try again
-          </button>
+          <p className="text-zinc-700 font-medium text-sm mb-1">{fetchError}</p>
+          <p className="text-zinc-400 text-xs mb-4">OpenStreetMap directories might be busy or slow to respond.</p>
+          <div className="flex gap-3 justify-center">
+            <button
+              onClick={() => setUserCoords({ ...userCoords })}
+              className="bg-[#4B1FD6] text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-[#3B0764]"
+            >
+              Retry
+            </button>
+            <a
+              href={`https://www.google.com/maps/search/mobile+store/@${userCoords?.lat || 19.0596},${userCoords?.lng || 72.8295},14z`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-[#4B1FD6] text-[#4B1FD6] px-5 py-2 rounded-full text-xs font-bold hover:bg-[#EDE9FE]/50"
+            >
+              Search on Google Maps ↗
+            </a>
+          </div>
         </div>
       )}
 
       {/* Empty state */}
       {!loading && !fetchError && stores.length === 0 && (
-        <div className="text-center py-16 bg-white rounded-2xl border border-[#E4E4E7]">
+        <div className="text-center py-16 bg-white rounded-2xl border border-[#E4E4E7] shadow-xs">
           <MapPin className="w-10 h-10 text-zinc-300 mx-auto mb-3" />
-          <h3 className="font-semibold text-zinc-800 mb-1 text-sm">No stores found nearby</h3>
-          <p className="text-zinc-500 text-xs mb-4">
-            Try expanding the radius to find more partner stores.
+          <h3 className="font-semibold text-zinc-900 mb-1 text-base">
+            No mobile stores found within {radius / 1000} km
+          </h3>
+          <p className="text-zinc-500 text-sm mb-4 max-w-sm mx-auto">
+            OpenStreetMap may not have all stores mapped in your area yet.
           </p>
-          <button
-            onClick={() => setRadius(10000)}
-            className="bg-[#4B1FD6] text-white px-6 py-2 rounded-full text-xs font-bold"
-          >
-            Search within 10 km
-          </button>
+          <div className="flex gap-3 justify-center">
+            <button
+              onClick={() => setRadius(10000)}
+              className="bg-[#4B1FD6] hover:bg-[#3B0764] text-white px-5 py-2 rounded-full text-sm font-semibold transition-colors"
+            >
+              Try 10 km radius
+            </button>
+            <a
+              href={`https://www.google.com/maps/search/mobile+store/@${userCoords?.lat},${userCoords?.lng},14z`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-[#4B1FD6] text-[#4B1FD6] hover:bg-[#EDE9FE]/50 px-5 py-2 rounded-full text-sm font-semibold transition-colors"
+            >
+              Search on Google Maps ↗
+            </a>
+          </div>
         </div>
       )}
 

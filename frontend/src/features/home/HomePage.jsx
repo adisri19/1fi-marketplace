@@ -276,6 +276,10 @@ export default function HomePage() {
                       src={v.imageUrl}
                       alt={p.name}
                       className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = `https://placehold.co/600x600/1a1a2e/ffffff?text=${encodeURIComponent(p.name)}`;
+                      }}
                     />
                   </div>
                   <div className="text-[11px] font-bold text-zinc-400 uppercase">{p.brand?.name || p.brand}</div>

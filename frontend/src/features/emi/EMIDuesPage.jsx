@@ -22,7 +22,7 @@ export default function EMIDuesPage() {
       id: 'due-1',
       productName: 'Apple iPhone 17 Pro',
       variantLabel: '256GB – Natural Titanium',
-      imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/apple-iphone-17-pro.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1632661674596-df8be070a5c5?w=600&h=600&fit=crop&q=80',
       monthlyAmount: 11242,
       tenureMonths: 12,
       paidMonths: 4,
@@ -33,7 +33,7 @@ export default function EMIDuesPage() {
       id: 'due-2',
       productName: 'Samsung Galaxy S25 Ultra',
       variantLabel: '256GB – Titanium Black',
-      imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/samsung-galaxy-s25-ultra.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=600&fit=crop&q=80',
       monthlyAmount: 9999,
       tenureMonths: 6,
       paidMonths: 3,
@@ -47,7 +47,7 @@ export default function EMIDuesPage() {
       id: 'comp-1',
       productName: 'OnePlus 12',
       variantLabel: '256GB – Flowy Emerald',
-      imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/oneplus-12.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=600&h=600&fit=crop&q=80',
       totalPaid: 54999,
       tenureMonths: 12,
       closedDate: 'Aug 15, 2026',
@@ -56,7 +56,7 @@ export default function EMIDuesPage() {
       id: 'comp-2',
       productName: 'Google Pixel 8a',
       variantLabel: '128GB – Bay Blue',
-      imageUrl: 'https://fdn2.gsmarena.com/vv/bigpics/google-pixel-8a.jpg',
+      imageUrl: 'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=600&h=600&fit=crop&q=80',
       totalPaid: 52999,
       tenureMonths: 6,
       closedDate: 'May 10, 2026',
@@ -127,6 +127,10 @@ export default function EMIDuesPage() {
                         src={due.imageUrl}
                         alt={due.productName}
                         className="max-h-full max-w-full object-contain"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = `https://placehold.co/600x600/1a1a2e/ffffff?text=${encodeURIComponent(due.productName)}`;
+                        }}
                       />
                     </div>
                     <div>
@@ -220,7 +224,15 @@ export default function EMIDuesPage() {
               >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg bg-zinc-50 border p-1 flex items-center justify-center">
-                    <img src={comp.imageUrl} alt={comp.productName} className="max-h-full max-w-full object-contain" />
+                    <img
+                      src={comp.imageUrl}
+                      alt={comp.productName}
+                      className="max-h-full max-w-full object-contain"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = `https://placehold.co/600x600/1a1a2e/ffffff?text=${encodeURIComponent(comp.productName)}`;
+                      }}
+                    />
                   </div>
                   <div>
                     <h4 className="font-bold text-sm text-zinc-900">{comp.productName}</h4>

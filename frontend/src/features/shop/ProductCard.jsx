@@ -33,6 +33,10 @@ export default function ProductCard({ product }) {
             alt={product.name}
             className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-200"
             loading="lazy"
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = `https://placehold.co/600x600/1a1a2e/ffffff?text=${encodeURIComponent(product.name)}`;
+            }}
           />
         </div>
 
