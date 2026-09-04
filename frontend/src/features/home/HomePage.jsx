@@ -17,6 +17,21 @@ import {
 
 import { useUserStore } from '../../store/userStore';
 
+const BRAND_COLORS = {
+  Apple:    { bg: '1d1d1f', fg: 'ffffff' },
+  Samsung:  { bg: '1428a0', fg: 'ffffff' },
+  OnePlus:  { bg: 'eb0029', fg: 'ffffff' },
+  Google:   { bg: '4285f4', fg: 'ffffff' },
+  Xiaomi:   { bg: 'ff6900', fg: 'ffffff' },
+  vivo:     { bg: '415fff', fg: 'ffffff' },
+  iQOO:     { bg: '000000', fg: 'ffffff' },
+  OPPO:     { bg: '1d4ed8', fg: 'ffffff' },
+  Realme:   { bg: 'ffd700', fg: '000000' },
+  Motorola: { bg: '5c2d91', fg: 'ffffff' },
+  Nothing:  { bg: '000000', fg: 'ffffff' },
+  ASUS:     { bg: '00539c', fg: 'ffffff' },
+};
+
 export default function HomePage() {
   const { data: featuredProducts } = useProducts({ limit: 4 });
   const { user } = useUserStore();
@@ -278,7 +293,9 @@ export default function HomePage() {
                       className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform"
                       onError={(e) => {
                         e.target.onerror = null;
-                        e.target.src = '/images/products/iphone-17-pro.webp';
+                        const brandKey = typeof p.brand === 'object' ? p.brand?.name : p.brand;
+                        const colors = BRAND_COLORS[brandKey] || { bg: '6b21a8', fg: 'ffffff' };
+                        e.target.src = `https://placehold.co/600x600/${colors.bg}/${colors.fg}?text=${encodeURIComponent((p.name || 'Phone').split(' ').slice(0, 3).join('+'))}`;
                       }}
                     />
                   </div>

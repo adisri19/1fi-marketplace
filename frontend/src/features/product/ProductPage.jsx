@@ -119,6 +119,7 @@ export default function ProductPage() {
               mainImage={activeVariant.imageUrl}
               images={activeVariant.images}
               productName={product.name}
+              brand={product.brand?.name || product.brand}
             />
 
             {/* Value Props under Image Gallery */}

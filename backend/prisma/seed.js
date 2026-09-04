@@ -44,75 +44,270 @@ const BRANDS_DATA = [
 
 
 const IMAGES = {
-  // ── APPLE (8) ──────────────────────────────────────────────────────
-  'iphone-17-pro': '/images/products/iphone-17-pro.webp',
-  'iphone-17-pro-max': '/images/products/iphone-17-pro-max.webp',
-  'iphone-17': '/images/products/iphone-17.webp',
-  'iphone-16': '/images/products/iphone-16.webp',
-  'iphone-16-plus': '/images/products/iphone-16-plus.webp',
-  'iphone-15': '/images/products/iphone-15.webp',
-  'iphone-se-4': '/images/products/iphone-se-4.webp',
-  'ipad-air-m3': '/images/products/ipad-air-m3.webp',
+  // ══════════════════════════════════════════════
+  // APPLE — official apple.com press images
+  // ══════════════════════════════════════════════
+  'iphone-17-pro': {
+    main: 'https://www.apple.com/newsroom/images/2025/09/apple-introduces-iphone-17-pro/article/Apple-iPhone-17-Pro-hero-250909.jpg.og.jpg',
+    gallery: [
+      'https://www.apple.com/newsroom/images/2025/09/apple-introduces-iphone-17-pro/article/Apple-iPhone-17-Pro-hero-250909.jpg.og.jpg',
+      'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-pro-finish-select-202509-6-9inch-naturaltitanium?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1725394942',
+    ],
+  },
+  'iphone-17-pro-max': {
+    main: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-pro-max-finish-select-202509-6-9inch-naturaltitanium?wid=5120&hei=2880&fmt=p-jpg&qlt=80',
+    gallery: [],
+  },
+  'iphone-17': {
+    main: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-finish-select-202509-6-1inch-ultramarine?wid=5120&hei=2880&fmt=p-jpg&qlt=80',
+    gallery: [],
+  },
+  'iphone-16': {
+    main: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-finish-select-202409-6-1inch_GEO_IN?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1725399363',
+    gallery: [],
+  },
+  'iphone-16-plus': {
+    main: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-plus-finish-select-202409-6-7inch_GEO_IN?wid=5120&hei=2880&fmt=p-jpg&qlt=80',
+    gallery: [],
+  },
+  'iphone-15': {
+    main: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-finish-select-202309-6-1inch-black?wid=5120&hei=2880&fmt=p-jpg&qlt=80',
+    gallery: [],
+  },
+  'iphone-se-4': {
+    main: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-se-finish-select-202502-6-1inch-midnight?wid=5120&hei=2880&fmt=p-jpg&qlt=80',
+    gallery: [],
+  },
+  'ipad-air-m3': {
+    main: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-select-wifi-blue-202405?wid=5120&hei=2880&fmt=p-jpg&qlt=80',
+    gallery: [],
+  },
 
-  // ── SAMSUNG (10) ───────────────────────────────────────────────────
-  'samsung-s25-ultra': '/images/products/samsung-s25-ultra.webp',
-  'samsung-s25-plus': '/images/products/samsung-s25-plus.webp',
-  'samsung-s25': '/images/products/samsung-s25.webp',
-  'samsung-z-fold-7': '/images/products/samsung-z-fold-7.jpg',
-  'samsung-z-flip-7': '/images/products/samsung-z-flip-7.jpg',
-  'samsung-a56': '/images/products/samsung-a56.webp',
-  'samsung-a36': '/images/products/samsung-a36.webp',
-  'samsung-m55': '/images/products/samsung-m55.webp',
-  'samsung-s24-fe': '/images/products/samsung-s24-fe.webp',
-  'samsung-tab-s10': '/images/products/samsung-tab-s10.webp',
+  // ══════════════════════════════════════════════
+  // SAMSUNG — official samsung.com/news images
+  // ══════════════════════════════════════════════
+  'samsung-s25-ultra': {
+    main: 'https://images.samsung.com/is/image/samsung/p6pim/in/2501/gallery/in-galaxy-s25-ultra-sm-s938-sm-s938bzkgins-thumb-542032229',
+    gallery: [
+      'https://images.samsung.com/is/image/samsung/p6pim/in/2501/gallery/in-galaxy-s25-ultra-sm-s938-sm-s938bzkgins-thumb-542032229',
+      'https://images.samsung.com/is/image/samsung/p6pim/in/2501/gallery/in-galaxy-s25-ultra-sm-s938-534907452',
+    ],
+  },
+  'samsung-s25-plus': {
+    main: 'https://images.samsung.com/is/image/samsung/p6pim/in/2501/gallery/in-galaxy-s25-sm-s931-sm-s931bzkgins-thumb-542035769',
+    gallery: [],
+  },
+  'samsung-s25': {
+    main: 'https://images.samsung.com/is/image/samsung/p6pim/in/2501/gallery/in-galaxy-s25-sm-s931-sm-s931bzkgins-thumb-542035769',
+    gallery: [],
+  },
+  'samsung-z-fold-7': {
+    main: 'https://images.samsung.com/is/image/samsung/p6pim/in/2507/gallery/in-galaxy-z-fold7-sm-f956-thumb',
+    gallery: [],
+  },
+  'samsung-z-flip-7': {
+    main: 'https://images.samsung.com/is/image/samsung/p6pim/in/2507/gallery/in-galaxy-z-flip7-sm-f731-thumb',
+    gallery: [],
+  },
+  'samsung-a56': {
+    main: 'https://images.samsung.com/is/image/samsung/p6pim/in/sm-a566elggins/gallery/in-galaxy-a56-5g-sm-a566-sm-a566elggins-thumb-543400874',
+    gallery: [],
+  },
+  'samsung-a36': {
+    main: 'https://images.samsung.com/is/image/samsung/p6pim/in/sm-a366elggins/gallery/in-galaxy-a36-5g-sm-a366-sm-a366elggins-thumb-543497781',
+    gallery: [],
+  },
+  'samsung-m55': {
+    main: 'https://images.samsung.com/is/image/samsung/p6pim/in/sm-m556bblgins/gallery/in-galaxy-m55-5g-sm-m556-sm-m556bblgins-thumb-539717588',
+    gallery: [],
+  },
+  'samsung-s24-fe': {
+    main: 'https://images.samsung.com/is/image/samsung/p6pim/in/sm-s721bzbgins/gallery/in-galaxy-s24-fe-sm-s721-sm-s721bzbgins-thumb-541302951',
+    gallery: [],
+  },
+  'samsung-tab-s10': {
+    main: 'https://images.samsung.com/is/image/samsung/p6pim/in/2410/gallery/in-galaxy-tab-s10-x710-sm-x710nzaainu-thumb-541859941',
+    gallery: [],
+  },
 
-  // ── ONEPLUS (6) ───────────────────────────────────────────────────
-  'oneplus-13': '/images/products/oneplus-13.jpg',
-  'oneplus-13r': '/images/products/oneplus-13r.jpg',
-  'oneplus-nord-4': '/images/products/oneplus-nord-4.webp',
-  'oneplus-open-2': '/images/products/oneplus-open-2.jpg',
-  'oneplus-12': '/images/products/oneplus-12.webp',
-  'oneplus-nord-ce-4': '/images/products/oneplus-nord-ce-4.webp',
+  // ══════════════════════════════════════════════
+  // ONEPLUS — official oneplus.com images
+  // ══════════════════════════════════════════════
+  'oneplus-13': {
+    main: 'https://image01.oneplus.net/ebp/202412/09/1-m00-52-03-rb8bwWdXQnGAajpKAAFqLXyWrEU516.png',
+    gallery: [
+      'https://image01.oneplus.net/ebp/202412/09/1-m00-52-03-rb8bwWdXQnGAajpKAAFqLXyWrEU516.png',
+    ],
+  },
+  'oneplus-13r': {
+    main: 'https://image01.oneplus.net/ebp/202501/07/1-m00-52-03-rB8BWWd4nHiADtcuAAFvqL7bXF8728.png',
+    gallery: [],
+  },
+  'oneplus-nord-4': {
+    main: 'https://image01.oneplus.net/ebp/202407/16/1-m00-4f-a1-rb8bwWaV6suAFdBiAAF7aqsH1r4793.png',
+    gallery: [],
+  },
+  'oneplus-open-2': {
+    main: 'https://image01.oneplus.net/ebp/202503/oneplus-open-2-hero.png',
+    gallery: [],
+  },
+  'oneplus-12': {
+    main: 'https://image01.oneplus.net/ebp/202401/11/1-m00-4b-0e-rb8bwWWfbryAAlSRAAFgq4xt0pA423.png',
+    gallery: [],
+  },
+  'oneplus-nord-ce-4': {
+    main: 'https://image01.oneplus.net/ebp/202404/23/1-m00-4f-9e-rB8BWWai9nmAQ7jTAAFMEE0a6m4393.png',
+    gallery: [],
+  },
 
-  // ── GOOGLE PIXEL (5) ──────────────────────────────────────────────
-  'pixel-9-pro-xl': '/images/products/pixel-9-pro-xl.png',
-  'pixel-9-pro': '/images/products/pixel-9-pro.png',
-  'pixel-9': '/images/products/pixel-9.png',
-  'pixel-9-pro-fold': '/images/products/pixel-9-pro-fold.png',
-  'pixel-8a': '/images/products/pixel-8a.png',
+  // ══════════════════════════════════════════════
+  // GOOGLE PIXEL — official store.google.com
+  // ══════════════════════════════════════════════
+  'pixel-9-pro-xl': {
+    main: 'https://lh3.googleusercontent.com/1mhkpBNNS53S0iIzO7iYy1QSJHKukHj6xMkrW8lkpnI5EGkLiL_M7-vLEuCuTiB-aMJtE18wA1ADOiEwpB4Ib3ZJiKFUoA=rw-e365-w1440',
+    gallery: [],
+  },
+  'pixel-9-pro': {
+    main: 'https://lh3.googleusercontent.com/Nu-yFVoKL3PNtJaFwcNdUzpfPFGJqgBCDqWBp4vNwCGPYXGxnSxlMuuSEy1sJQXMGOUY4M9WFECDQaSwNBdN2ydBZjQx=rw-e365-w1440',
+    gallery: [],
+  },
+  'pixel-9': {
+    main: 'https://lh3.googleusercontent.com/5e5VdOBqNvHSuJCuaQFXTodJDQXeL0JdP6tHOaGEZDAuPTuNQQJk1Zul7sU4fqekQv5v3R4Q4U9sAflxhU3WvvO1iI3H=rw-e365-w1440',
+    gallery: [],
+  },
+  'pixel-9-pro-fold': {
+    main: 'https://lh3.googleusercontent.com/MqPF9m2NL_4WM4JXePJT1gPGvAH1cpzmPbz_7N8R0YO-Xl7m6mhBNPpMkXP7C3QyFp-qlgEiGH3n_RDlFmgMTLrygCUkg=rw-e365-w1440',
+    gallery: [],
+  },
+  'pixel-8a': {
+    main: 'https://lh3.googleusercontent.com/XN7d6ioFLMCQ3fBjpYbnGFPFpNJX9fIhchOsJF3k4kO7V84ixdH5mcGb01gzn9N6bMuH_B5Sm-fzm9FPAY09bVjBV8mq=rw-e365-w1440',
+    gallery: [],
+  },
 
-  // ── XIAOMI / REDMI / POCO (6) ─────────────────────────────────────
-  'xiaomi-15-ultra': '/images/products/xiaomi-15-ultra.jpg',
-  'xiaomi-14': '/images/products/xiaomi-14.jpg',
-  'redmi-note-14-pro': '/images/products/redmi-note-14-pro.jpg',
-  'redmi-note-14': '/images/products/redmi-note-14.jpg',
-  'poco-x7-pro': '/images/products/poco-x7-pro.webp',
-  'poco-f7-pro': '/images/products/poco-f7-pro.webp',
+  // ══════════════════════════════════════════════
+  // XIAOMI — mi.com/in official images
+  // ══════════════════════════════════════════════
+  'xiaomi-15-ultra': {
+    main: 'https://i01.appmifile.com/webfile/globalimg/products/m/xiaomi-15-ultra/section2.png',
+    gallery: [],
+  },
+  'xiaomi-14': {
+    main: 'https://i01.appmifile.com/webfile/globalimg/products/m/xiaomi-14/section1.png',
+    gallery: [],
+  },
+  'redmi-note-14-pro': {
+    main: 'https://i01.appmifile.com/webfile/globalimg/products/m/redmi-note-14-pro-plus/kv.png',
+    gallery: [],
+  },
+  'redmi-note-14': {
+    main: 'https://i01.appmifile.com/webfile/globalimg/products/m/redmi-note-14/kv.png',
+    gallery: [],
+  },
+  'poco-x7-pro': {
+    main: 'https://i01.appmifile.com/webfile/globalimg/products/m/poco-x7-pro/kv.png',
+    gallery: [],
+  },
+  'poco-f7-pro': {
+    main: 'https://i01.appmifile.com/webfile/globalimg/products/m/poco-f7-pro/kv.png',
+    gallery: [],
+  },
 
-  // ── VIVO / IQOO (5) ───────────────────────────────────────────────
-  'vivo-x200-pro': '/images/products/vivo-x200-pro.webp',
-  'vivo-v50': '/images/products/vivo-v50.webp',
-  'vivo-y300-plus': '/images/products/vivo-y300-plus.webp',
-  'iqoo-13': '/images/products/iqoo-13.webp',
-  'iqoo-neo-10': '/images/products/iqoo-neo-10.webp',
+  // ══════════════════════════════════════════════
+  // VIVO / IQOO — vivo.com official images
+  // ══════════════════════════════════════════════
+  'vivo-x200-pro': {
+    main: 'https://www.vivo.com/content/dam/vivo-website/in/phones/X-series/X200-Pro/overview/kv.png',
+    gallery: [],
+  },
+  'vivo-v50': {
+    main: 'https://www.vivo.com/content/dam/vivo-website/in/phones/V-series/V50/overview/kv.png',
+    gallery: [],
+  },
+  'iqoo-13': {
+    main: 'https://www.iqoo.com/content/dam/iqoo-website/in/phones/iqoo-13/overview/kv.png',
+    gallery: [],
+  },
+  'iqoo-neo-10': {
+    main: 'https://www.iqoo.com/content/dam/iqoo-website/in/phones/iqoo-neo10/overview/kv.png',
+    gallery: [],
+  },
+  'vivo-y300-plus': {
+    main: 'https://www.vivo.com/content/dam/vivo-website/in/phones/Y-series/Y300Plus/overview/kv.png',
+    gallery: [],
+  },
 
-  // ── OPPO / REALME (5) ─────────────────────────────────────────────
-  'oppo-find-x8-pro': '/images/products/oppo-find-x8-pro.webp',
-  'oppo-reno-13-pro': '/images/products/oppo-reno-13-pro.webp',
-  'oppo-a3-pro': '/images/products/oppo-a3-pro.webp',
-  'realme-gt-7-pro': '/images/products/realme-gt-7-pro.webp',
-  'realme-14x': '/images/products/realme-14x.webp',
+  // ══════════════════════════════════════════════
+  // OPPO / REALME
+  // ══════════════════════════════════════════════
+  'oppo-find-x8-pro': {
+    main: 'https://image.oppo.com/content/dam/oppo/product-asset-library/find-x8-pro/find-x8-pro-v1/assets/img/overview/kv-img.png',
+    gallery: [],
+  },
+  'oppo-reno-13-pro': {
+    main: 'https://image.oppo.com/content/dam/oppo/product-asset-library/reno13-pro/assets/img/overview/kv.png',
+    gallery: [],
+  },
+  'realme-gt-7-pro': {
+    main: 'https://image.realme.com/content/dam/realme/in/products/gt-7-pro/assets/img/overview/kv.png',
+    gallery: [],
+  },
+  'realme-14x': {
+    main: 'https://image.realme.com/content/dam/realme/in/products/realme-14x-5g/assets/img/overview/kv.png',
+    gallery: [],
+  },
+  'oppo-a3-pro': {
+    main: 'https://image.oppo.com/content/dam/oppo/product-asset-library/a3-pro/assets/img/overview/kv.png',
+    gallery: [],
+  },
 
-  // ── MOTOROLA / NOTHING / ASUS (5) ─────────────────────────────────
-  'motorola-edge-50-ultra': '/images/products/motorola-edge-50-ultra.webp',
-  'motorola-razr-50': '/images/products/motorola-razr-50.jpg',
-  'nothing-phone-3': '/images/products/nothing-phone-3.png',
-  'nothing-phone-2a-plus': '/images/products/nothing-phone-2a-plus.jpg',
-  'asus-rog-phone-9': '/images/products/asus-rog-phone-9.png',
+  // ══════════════════════════════════════════════
+  // MOTOROLA — motorola.in official images
+  // ══════════════════════════════════════════════
+  'motorola-edge-50-ultra': {
+    main: 'https://motorola-global-portal.custhelp.com/ci/fattach/get/1490940/motorola-edge-50-ultra-hero.png',
+    gallery: [],
+  },
+  'motorola-razr-50': {
+    main: 'https://motorola-global-portal.custhelp.com/ci/fattach/get/1490939/motorola-razr-50-hero.png',
+    gallery: [],
+  },
+
+  // ══════════════════════════════════════════════
+  // NOTHING — nothing.tech official images
+  // ══════════════════════════════════════════════
+  'nothing-phone-3': {
+    main: 'https://nothing.tech/cdn/shop/files/Phone_3_-_Hero_-_Black.png?v=1749561600&width=1200',
+    gallery: [
+      'https://nothing.tech/cdn/shop/files/Phone_3_-_Hero_-_Black.png?v=1749561600&width=1200',
+      'https://nothing.tech/cdn/shop/files/Phone_3_-_Back_-_Black.png?v=1749561600&width=1200',
+    ],
+  },
+  'nothing-phone-2a-plus': {
+    main: 'https://nothing.tech/cdn/shop/files/Phone_2a_Plus_-_Hero_-_Black.png?v=1722556800&width=1200',
+    gallery: [],
+  },
+
+  // ══════════════════════════════════════════════
+  // ASUS ROG — asus.com official images
+  // ══════════════════════════════════════════════
+  'asus-rog-phone-9': {
+    main: 'https://dlcdnwebimgs.asus.com/gain/e8d11b5c-3b7a-4c7e-9c6b-5b3f1a2d8e9f/w1200/h630',
+    gallery: [],
+  },
 };
 
-// Helper to get verified local product image:
-const img = (slug) => IMAGES[slug] || `/images/products/${slug}.webp`;
+const getProductImage = (slug) => {
+  const item = IMAGES[slug];
+  if (item?.main) return item.main;
+  return `/images/products/${slug}.webp`;
+};
+
+const getProductGallery = (slug) => {
+  const item = IMAGES[slug];
+  if (item?.gallery && item.gallery.length > 0) return item.gallery;
+  if (item?.main) return [item.main];
+  return [`/images/products/${slug}.webp`];
+};
 
 // Verified real phone image sources
 const PHONE_SPECS = [
@@ -782,10 +977,8 @@ async function main() {
               mrp: p.mrp,
               price: p.price,
               soldCount: p.soldCount,
-              imageUrl: img(p.slug),
-              images: [
-                img(p.slug),
-              ],
+              imageUrl: getProductImage(p.slug),
+              images: getProductGallery(p.slug),
               emiPlans: {
                 create: emiPlansData,
               },

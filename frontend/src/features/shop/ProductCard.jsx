@@ -3,6 +3,21 @@ import { Link } from 'react-router-dom';
 import { formatINR } from '../../utils/formatCurrency';
 import Badge from '../../components/ui/Badge';
 
+const BRAND_COLORS = {
+  Apple:    { bg: '1d1d1f', fg: 'ffffff' },
+  Samsung:  { bg: '1428a0', fg: 'ffffff' },
+  OnePlus:  { bg: 'eb0029', fg: 'ffffff' },
+  Google:   { bg: '4285f4', fg: 'ffffff' },
+  Xiaomi:   { bg: 'ff6900', fg: 'ffffff' },
+  vivo:     { bg: '415fff', fg: 'ffffff' },
+  iQOO:     { bg: '000000', fg: 'ffffff' },
+  OPPO:     { bg: '1d4ed8', fg: 'ffffff' },
+  Realme:   { bg: 'ffd700', fg: '000000' },
+  Motorola: { bg: '5c2d91', fg: 'ffffff' },
+  Nothing:  { bg: '000000', fg: 'ffffff' },
+  ASUS:     { bg: '00539c', fg: 'ffffff' },
+};
+
 export default function ProductCard({ product }) {
   // Find minimum price among variants and first variant
   const variants = product.variants || [];
@@ -15,6 +30,8 @@ export default function ProductCard({ product }) {
     (sum, v) => sum + (v.soldCount || 0),
     0
   );
+
+  const brandName = typeof product.brand === 'object' ? product.brand?.name : product.brand;
 
   return (
     <div className="group bg-white rounded-card border border-[#E4E4E7] shadow-[0_2px_8px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_24px_rgba(75,31,214,0.12)] hover:scale-[1.01] transition-all duration-150 flex flex-col justify-between overflow-hidden">
@@ -35,7 +52,8 @@ export default function ProductCard({ product }) {
             loading="lazy"
             onError={(e) => {
               e.target.onerror = null;
-              e.target.src = '/images/products/iphone-17-pro.webp';
+              const colors = BRAND_COLORS[brandName] || { bg: '6b21a8', fg: 'ffffff' };
+              e.target.src = `https://placehold.co/600x600/${colors.bg}/${colors.fg}?text=${encodeURIComponent((product.name || 'Phone').split(' ').slice(0, 3).join('+'))}`;
             }}
           />
         </div>

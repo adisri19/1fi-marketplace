@@ -12,6 +12,21 @@ import {
   CreditCard,
 } from 'lucide-react';
 
+const BRAND_COLORS = {
+  Apple:    { bg: '1d1d1f', fg: 'ffffff' },
+  Samsung:  { bg: '1428a0', fg: 'ffffff' },
+  OnePlus:  { bg: 'eb0029', fg: 'ffffff' },
+  Google:   { bg: '4285f4', fg: 'ffffff' },
+  Xiaomi:   { bg: 'ff6900', fg: 'ffffff' },
+  vivo:     { bg: '415fff', fg: 'ffffff' },
+  iQOO:     { bg: '000000', fg: 'ffffff' },
+  OPPO:     { bg: '1d4ed8', fg: 'ffffff' },
+  Realme:   { bg: 'ffd700', fg: '000000' },
+  Motorola: { bg: '5c2d91', fg: 'ffffff' },
+  Nothing:  { bg: '000000', fg: 'ffffff' },
+  ASUS:     { bg: '00539c', fg: 'ffffff' },
+};
+
 export default function EMIDuesPage() {
   const [showCompleted, setShowCompleted] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
@@ -20,9 +35,10 @@ export default function EMIDuesPage() {
   const activeDues = [
     {
       id: 'due-1',
+      brand: 'Apple',
       productName: 'Apple iPhone 17 Pro',
       variantLabel: '256GB – Natural Titanium',
-      imageUrl: '/images/products/iphone-17-pro.webp',
+      imageUrl: 'https://www.apple.com/newsroom/images/2025/09/apple-introduces-iphone-17-pro/article/Apple-iPhone-17-Pro-hero-250909.jpg.og.jpg',
       monthlyAmount: 11242,
       tenureMonths: 12,
       paidMonths: 4,
@@ -31,9 +47,10 @@ export default function EMIDuesPage() {
     },
     {
       id: 'due-2',
+      brand: 'Samsung',
       productName: 'Samsung Galaxy S25 Ultra',
       variantLabel: '256GB – Titanium Black',
-      imageUrl: '/images/products/samsung-s25-ultra.webp',
+      imageUrl: 'https://images.samsung.com/is/image/samsung/p6pim/in/2501/gallery/in-galaxy-s25-ultra-sm-s938-sm-s938bzkgins-thumb-542032229',
       monthlyAmount: 9999,
       tenureMonths: 6,
       paidMonths: 3,
@@ -45,18 +62,20 @@ export default function EMIDuesPage() {
   const completedDues = [
     {
       id: 'comp-1',
+      brand: 'OnePlus',
       productName: 'OnePlus 12',
       variantLabel: '256GB – Flowy Emerald',
-      imageUrl: '/images/products/oneplus-12.webp',
+      imageUrl: 'https://image01.oneplus.net/ebp/202401/11/1-m00-4b-0e-rb8bwWWfbryAAlSRAAFgq4xt0pA423.png',
       totalPaid: 54999,
       tenureMonths: 12,
       closedDate: 'Aug 15, 2026',
     },
     {
       id: 'comp-2',
+      brand: 'Google',
       productName: 'Google Pixel 8a',
       variantLabel: '128GB – Bay Blue',
-      imageUrl: '/images/products/pixel-8a.png',
+      imageUrl: 'https://lh3.googleusercontent.com/XN7d6ioFLMCQ3fBjpYbnGFPFpNJX9fIhchOsJF3k4kO7V84ixdH5mcGb01gzn9N6bMuH_B5Sm-fzm9FPAY09bVjBV8mq=rw-e365-w1440',
       totalPaid: 52999,
       tenureMonths: 6,
       closedDate: 'May 10, 2026',
@@ -129,7 +148,8 @@ export default function EMIDuesPage() {
                         className="max-h-full max-w-full object-contain"
                         onError={(e) => {
                           e.target.onerror = null;
-                          e.target.src = '/images/products/iphone-17-pro.webp';
+                          const colors = BRAND_COLORS[due.brand] || { bg: '6b21a8', fg: 'ffffff' };
+                          e.target.src = `https://placehold.co/600x600/${colors.bg}/${colors.fg}?text=${encodeURIComponent(due.productName.split(' ').slice(0, 3).join('+'))}`;
                         }}
                       />
                     </div>
@@ -230,7 +250,8 @@ export default function EMIDuesPage() {
                       className="max-h-full max-w-full object-contain"
                       onError={(e) => {
                         e.target.onerror = null;
-                        e.target.src = '/images/products/iphone-17-pro.webp';
+                        const colors = BRAND_COLORS[comp.brand] || { bg: '6b21a8', fg: 'ffffff' };
+                        e.target.src = `https://placehold.co/600x600/${colors.bg}/${colors.fg}?text=${encodeURIComponent(comp.productName.split(' ').slice(0, 3).join('+'))}`;
                       }}
                     />
                   </div>
