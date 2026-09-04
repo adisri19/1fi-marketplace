@@ -1,53 +1,72 @@
 // src/services/nearbyStores.js
 
+const OVERPASS_ENDPOINTS = [
+  'https://overpass-api.de/api/interpreter',
+  'https://overpass.kumi.systems/api/interpreter',
+  'https://maps.mail.ru/osm/tools/overpass/api/interpreter',
+];
+
 export const fetchNearbyStores = async (lat, lng, radiusMeters = 5000) => {
-  try {
-    const query = `
-      [out:json][timeout:25];
-      (
-        node["shop"="mobile_phone"](around:${radiusMeters},${lat},${lng});
-        node["shop"="electronics"](around:${radiusMeters},${lat},${lng});
-        node["name"~"mobile|phone|samsung|apple|oneplus|croma|reliance",i](around:${radiusMeters},${lat},${lng});
-      );
-      out body 20;
-    `;
+  const query = `
+    [out:json][timeout:25];
+    (
+      node["shop"="mobile_phone"](around:${radiusMeters},${lat},${lng});
+      node["shop"="electronics"](around:${radiusMeters},${lat},${lng});
+      way["shop"="mobile_phone"](around:${radiusMeters},${lat},${lng});
+      way["shop"="electronics"](around:${radiusMeters},${lat},${lng});
+    );
+    out center body 30;
+  `;
 
-    const response = await fetch('https://overpass-api.de/api/interpreter', {
-      method: 'POST',
-      body: `data=${encodeURIComponent(query)}`,
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    });
+  // Try each endpoint until one works
+  for (const endpoint of OVERPASS_ENDPOINTS) {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 8000);
 
-    if (!response.ok) {
-      throw new Error(`Overpass API error: ${response.statusText}`);
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `data=${encodeURIComponent(query)}`,
+        signal: controller.signal,
+      });
+
+      clearTimeout(timeoutId);
+
+      if (!response.ok) continue;
+
+      const data = await response.json();
+
+      const stores = (data.elements || [])
+        .filter((el) => el.lat || el.center?.lat)
+        .map((el) => ({
+          id: String(el.id),
+          name: el.tags?.name || el.tags?.['name:en'] || 'Authorized Mobile Store',
+          address: [
+            el.tags?.['addr:housenumber'],
+            el.tags?.['addr:street'],
+            el.tags?.['addr:suburb'],
+            el.tags?.['addr:city'],
+          ]
+            .filter(Boolean)
+            .join(', ') || el.tags?.['addr:full'] || 'Main Road, Electronic Market',
+          lat: el.lat || el.center?.lat,
+          lng: el.lon || el.center?.lon,
+          phone: el.tags?.phone || el.tags?.['contact:phone'] || '+91 22 6835 1200',
+          openingHours: el.tags?.opening_hours || '10:00 AM – 9:00 PM',
+          website: el.tags?.website || el.tags?.['contact:website'] || null,
+        }));
+
+      if (stores.length > 0) {
+        return stores;
+      }
+    } catch (err) {
+      console.warn(`Overpass endpoint failed (${endpoint}):`, err.message);
+      continue;
     }
-
-    const data = await response.json();
-    const stores = (data.elements || []).map((el) => ({
-      id: el.id,
-      name: el.tags?.name || 'Authorized Mobile Partner Store',
-      address: [
-        el.tags?.['addr:housenumber'],
-        el.tags?.['addr:street'],
-        el.tags?.['addr:suburb'],
-        el.tags?.['addr:city'],
-      ]
-        .filter(Boolean)
-        .join(', ') || 'Partner Electronics Store, City Center',
-      lat: el.lat,
-      lng: el.lon,
-      phone: el.tags?.phone || el.tags?.['contact:phone'] || '+91 22 6835 1200',
-      openingHours: el.tags?.opening_hours || '10:00 AM – 9:30 PM',
-    }));
-
-    if (stores.length > 0) {
-      return stores;
-    }
-  } catch (err) {
-    console.warn('Overpass API failed or timed out, using fallback stores:', err);
   }
 
-  // Graceful fallback stores around the user coordinate
+  // Graceful fallback stores around the coordinates
   return getFallbackStores(lat, lng);
 };
 
@@ -63,22 +82,22 @@ export const getDistance = (lat1, lon1, lat2, lon2) => {
   return Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
 };
 
-export const formatDistance = (meters) => {
-  if (meters < 1000) return `${meters} m away`;
-  return `${(meters / 1000).toFixed(1)} km away`;
+export const formatDistance = (metres) => {
+  if (metres < 1000) return `${metres} m`;
+  return `${(metres / 1000).toFixed(1)} km`;
 };
 
 function getFallbackStores(lat, lng) {
-  const baseLat = lat || 19.076;
-  const baseLng = lng || 72.8777;
+  const baseLat = lat || 19.0596;
+  const baseLng = lng || 72.8295;
 
   return [
     {
       id: 'fb-1',
-      name: 'Reliance Digital — 1Fi Verified Partner',
+      name: 'Reliance Digital — 1Fi Partner',
       address: 'Linking Road, Bandra West, Mumbai',
-      lat: baseLat + 0.008,
-      lng: baseLng + 0.006,
+      lat: baseLat + 0.005,
+      lng: baseLng + 0.004,
       phone: '+91 22 2640 5501',
       openingHours: '10:00 AM – 9:30 PM',
     },
@@ -87,25 +106,25 @@ function getFallbackStores(lat, lng) {
       name: 'Apple Store BKC',
       address: 'Jio World Drive, Bandra Kurla Complex',
       lat: baseLat + 0.012,
-      lng: baseLng - 0.005,
+      lng: baseLng - 0.006,
       phone: '+91 22 6835 1200',
       openingHours: '11:00 AM – 10:00 PM',
     },
     {
       id: 'fb-3',
       name: 'Croma Electronics Hub',
-      address: 'Phoenix Palladium, High Street Mall',
-      lat: baseLat - 0.015,
-      lng: baseLng + 0.009,
+      address: 'Waterfield Road, Bandra West',
+      lat: baseLat - 0.007,
+      lng: baseLng + 0.005,
       phone: '+91 22 6660 7700',
       openingHours: '10:30 AM – 9:30 PM',
     },
     {
       id: 'fb-4',
       name: 'Samsung SmartCafé Premier',
-      address: 'Shop 4, Horizon Plaza, Main Avenue',
-      lat: baseLat + 0.019,
-      lng: baseLng + 0.011,
+      address: 'Hill Road, Near Bandra Station',
+      lat: baseLat + 0.009,
+      lng: baseLng - 0.003,
       phone: '+91 22 2600 8900',
       openingHours: '10:00 AM – 9:00 PM',
     },

@@ -79,3 +79,17 @@ export function ProductPageSkeleton() {
     </div>
   );
 }
+
+export function StoreSkeleton() {
+  return (
+    <div className="bg-white rounded-card border border-[#E4E4E7] p-5 animate-pulse space-y-3">
+      <div className="h-5 bg-gray-200 rounded w-2/3 mb-2" />
+      <div className="h-3.5 bg-gray-200 rounded w-full mb-1" />
+      <div className="h-3.5 bg-gray-200 rounded w-3/4 mb-4" />
+      <div className="grid grid-cols-2 gap-2 pt-2">
+        <div className="h-9 bg-gray-200 rounded-pill w-full" />
+        <div className="h-9 bg-gray-200 rounded-pill w-full" />
+      </div>
+    </div>
+  );
+}

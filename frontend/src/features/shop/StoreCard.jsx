@@ -4,7 +4,9 @@ import { formatDistance, getDistance } from '../../services/nearbyStores';
 
 export default function StoreCard({ store, userCoords }) {
   const distance =
-    userCoords?.lat && store?.lat
+    store?.distanceMetres !== undefined
+      ? store.distanceMetres
+      : userCoords?.lat && store?.lat
       ? getDistance(userCoords.lat, userCoords.lng, store.lat, store.lng)
       : null;
 

@@ -15,8 +15,24 @@ import {
   Zap,
 } from 'lucide-react';
 
+import { useUserStore } from '../../store/userStore';
+
 export default function HomePage() {
   const { data: featuredProducts } = useProducts({ limit: 4 });
+  const { user } = useUserStore();
+
+  const firstName = user?.name?.split(' ')[0] || 'Friend';
+  const totalLimit = user?.limit || 250000;
+  const usedLimit = user?.usedLimit || 0;
+  const availableLimit = totalLimit - usedLimit;
+  const usedPercent = totalLimit > 0 ? Math.round((usedLimit / totalLimit) * 100) : 0;
+
+  const getGreeting = () => {
+    const h = new Date().getHours();
+    if (h < 12) return 'Good morning';
+    if (h < 17) return 'Good afternoon';
+    return 'Good evening';
+  };
 
   const activeEMIs = [
     {
@@ -50,7 +66,7 @@ export default function HomePage() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 tracking-tight">
-              Good morning, Aditya 👋
+              {getGreeting()}, {firstName} 👋
             </h1>
             <p className="text-sm text-zinc-500 mt-0.5">
               Your Mutual Fund EMI Dashboard & Spending Limit
@@ -58,7 +74,7 @@ export default function HomePage() {
           </div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-pill bg-[#EDE9FE] text-[#4B1FD6] text-xs font-bold self-start sm:self-auto">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>₹3.5L Investments Pledged</span>
+            <span>{formatINR(totalLimit * 1.4)} Investments Pledged</span>
           </div>
         </div>
 
@@ -82,24 +98,24 @@ export default function HomePage() {
 
             <div className="flex items-baseline gap-3">
               <span className="text-3xl sm:text-4xl font-black tracking-tight">
-                ₹87,500
+                {formatINR(availableLimit)}
               </span>
               <span className="text-xs sm:text-sm text-white/70">
-                free of ₹2,50,000 total limit
+                free of {formatINR(totalLimit)} total limit
               </span>
             </div>
 
-            {/* Progress Bar: 65% used */}
+            {/* Progress Bar */}
             <div className="space-y-2">
               <div className="w-full h-3 bg-white/20 rounded-full overflow-hidden p-0.5 backdrop-blur-sm">
                 <div
                   className="h-full bg-gradient-to-r from-emerald-400 to-teal-300 rounded-full transition-all duration-500 shadow-sm"
-                  style={{ width: '65%' }}
+                  style={{ width: `${usedPercent || 5}%` }}
                 />
               </div>
               <div className="flex justify-between text-xs text-white/80 font-medium">
-                <span>Used: ₹1,62,500 (65%)</span>
-                <span>Available: ₹87,500 (35%)</span>
+                <span>Used: {formatINR(usedLimit)} ({usedPercent}%)</span>
+                <span>Available: {formatINR(availableLimit)}</span>
               </div>
             </div>
           </div>
