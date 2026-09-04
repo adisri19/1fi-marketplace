@@ -16,7 +16,6 @@ const BRAND_COLORS = {
 };
 
 export default function ImageGallery({ mainImage, images = [], productName, brand }) {
-  // Combine main image and gallery images into a unique list
   const allImages = React.useMemo(() => {
     const list = [mainImage, ...(images || [])].filter(Boolean);
     return Array.from(new Set(list));
@@ -24,35 +23,28 @@ export default function ImageGallery({ mainImage, images = [], productName, bran
 
   const [selectedImage, setSelectedImage] = useState(mainImage);
 
-  // When variant changes, reset the selected image to the new variant's main image
   useEffect(() => {
     setSelectedImage(mainImage);
   }, [mainImage]);
 
   const brandKey = (typeof brand === 'object' ? brand?.name : brand) || 
     (productName ? Object.keys(BRAND_COLORS).find(b => productName.toLowerCase().startsWith(b.toLowerCase())) : null);
-  const colors = BRAND_COLORS[brandKey] || { bg: '6b21a8', fg: 'ffffff' };
+  const colors = BRAND_COLORS[brandKey] || { bg: '5b21b6', fg: 'ffffff' };
   const fallbackUrl = `https://placehold.co/600x600/${colors.bg}/${colors.fg}?text=${encodeURIComponent((productName || 'Phone').split(' ').slice(0, 3).join('+'))}`;
 
   return (
     <div className="space-y-4">
       {/* Main Image Container */}
-      <div className="relative aspect-square w-full bg-zinc-50 rounded-2xl border border-[#E4E4E7] overflow-hidden flex items-center justify-center p-6 shadow-sm">
+      <div className="w-full min-h-80 aspect-square bg-gray-50 rounded-2xl flex items-center justify-center p-8 border border-gray-100">
         <img
           src={selectedImage || mainImage}
           alt={productName}
-          className="w-full h-full object-contain transition-all duration-300"
+          className="w-full h-full object-contain"
           onError={(e) => {
             e.target.onerror = null;
             e.target.src = fallbackUrl;
           }}
         />
-
-        {/* Rating Badge */}
-        <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm border border-zinc-200 px-2.5 py-1 rounded-pill shadow-md flex items-center gap-1.5 text-xs font-bold text-zinc-900">
-          <span>4.2</span>
-          <span className="text-amber-500 text-sm leading-none">★</span>
-        </div>
       </div>
 
       {/* Thumbnails strip */}
@@ -68,10 +60,10 @@ export default function ImageGallery({ mainImage, images = [], productName, bran
                 aria-label={`View image ${idx + 1}`}
                 aria-selected={isSelected}
                 role="tab"
-                className={`w-[60px] h-[60px] rounded-xl overflow-hidden bg-zinc-50 border-2 shrink-0 p-1 flex items-center justify-center transition-all ${
+                className={`w-14 h-14 rounded-xl overflow-hidden bg-gray-50 shrink-0 p-1 flex items-center justify-center transition-colors ${
                   isSelected
-                    ? 'border-[#4B1FD6] ring-2 ring-[#EDE9FE]'
-                    : 'border-[#E4E4E7] hover:border-zinc-400 opacity-80 hover:opacity-100'
+                    ? 'border-2 border-brand'
+                    : 'border border-gray-200 hover:border-gray-400'
                 }`}
               >
                 <img
@@ -88,6 +80,11 @@ export default function ImageGallery({ mainImage, images = [], productName, bran
           })}
         </div>
       )}
+
+      {/* Clean rating line below thumbnails */}
+      <p className="text-xs text-gray-400">
+        4.2 ★ · 127 reviews
+      </p>
     </div>
   );
 }

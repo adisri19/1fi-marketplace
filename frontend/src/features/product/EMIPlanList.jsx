@@ -4,25 +4,20 @@ import EMIPlanCard from './EMIPlanCard';
 export default function EMIPlanList({ plans = [], selectedPlanId, onSelectPlan }) {
   if (!plans || plans.length === 0) {
     return (
-      <div className="bg-zinc-50 border border-dashed border-zinc-300 rounded-xl p-6 text-center text-zinc-500 text-sm">
+      <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 text-center text-gray-400 text-sm">
         No EMI plans configured for this variant.
       </div>
     );
   }
 
   return (
-    <div className="space-y-3">
-      <div className="flex items-center justify-between">
-        <h3 className="text-base font-bold text-zinc-900 tracking-tight">
-          Choose EMI Tenure
-        </h3>
-        <span className="text-xs text-zinc-500 font-medium">
-          Backed by Mutual Funds
-        </span>
-      </div>
+    <div>
+      <p className="text-sm text-gray-500 mb-3">
+        EMI plans backed by mutual funds
+      </p>
 
       <div
-        className="space-y-2.5"
+        className="flex flex-col gap-2"
         role="radiogroup"
         aria-label="Choose EMI Tenure"
       >

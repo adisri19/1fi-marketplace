@@ -5,6 +5,7 @@ export const useProductStore = create((set) => ({
   selectedEMIPlanId: null,
   setVariant: (id) => set({ selectedVariantId: id, selectedEMIPlanId: null }),
   setEMIPlan: (id) => set({ selectedEMIPlanId: id }),
+  resetProduct: () => set({ selectedVariantId: null, selectedEMIPlanId: null }),
   reset: () => set({ selectedVariantId: null, selectedEMIPlanId: null }),
 
   // Nearby stores & Geolocation state

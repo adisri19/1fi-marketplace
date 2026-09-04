@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { formatINR } from '../../utils/formatCurrency';
-import Badge from '../../components/ui/Badge';
 
 const BRAND_COLORS = {
   Apple:    { bg: '1d1d1f', fg: 'ffffff' },
@@ -19,78 +18,88 @@ const BRAND_COLORS = {
 };
 
 export default function ProductCard({ product }) {
-  // Find minimum price among variants and first variant
   const variants = product.variants || [];
   const primaryVariant = variants[0] || {};
   const minPrice = variants.reduce(
     (min, v) => (v.price < min ? v.price : min),
     primaryVariant.price || 0
   );
-  const totalSold = variants.reduce(
-    (sum, v) => sum + (v.soldCount || 0),
-    0
-  );
 
   const brandName = typeof product.brand === 'object' ? product.brand?.name : product.brand;
 
+  // Extract unique colors for the variant indicator
+  const uniqueColors = Array.from(
+    new Map(
+      variants
+        .filter((v) => v.color)
+        .map((v) => [v.color, v.colorHex || '#A1A1AA'])
+    ).entries()
+  );
+
   return (
-    <div className="group bg-white rounded-card border border-[#E4E4E7] shadow-[0_2px_8px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_24px_rgba(75,31,214,0.12)] hover:scale-[1.01] transition-all duration-150 flex flex-col justify-between overflow-hidden">
-      <div className="p-4 flex flex-col flex-1">
-        {/* Top: Product image with badge */}
-        <div className="relative w-full h-[180px] bg-zinc-50 rounded-xl overflow-hidden flex items-center justify-center p-3 mb-3">
-          {product.badge && (
-            <div className="absolute top-2.5 left-2.5 z-10">
-              <Badge variant={product.badge.toLowerCase() === 'new' ? 'new' : 'hot'}>
-                {product.badge}
-              </Badge>
-            </div>
-          )}
-          <img
-            src={primaryVariant.imageUrl}
-            alt={product.name}
-            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-200"
-            loading="lazy"
-            onError={(e) => {
-              e.target.onerror = null;
-              const colors = BRAND_COLORS[brandName] || { bg: '6b21a8', fg: 'ffffff' };
-              e.target.src = `https://placehold.co/600x600/${colors.bg}/${colors.fg}?text=${encodeURIComponent((product.name || 'Phone').split(' ').slice(0, 3).join('+'))}`;
-            }}
-          />
-        </div>
+    <div className="relative bg-white rounded-card border border-gray-200 shadow-card hover:scale-[1.005] transition-transform duration-150 flex flex-col justify-between overflow-hidden">
+      {/* Subtle badge dot if product.badge exists */}
+      {product.badge && (
+        <div
+          title={product.badge}
+          className="absolute top-3 right-3 w-2 h-2 rounded-full bg-brand z-10"
+        />
+      )}
 
-        {/* Brand & Sold */}
-        <div className="flex items-center justify-between gap-2 mb-1">
-          <span className="text-xs text-[#71717A] uppercase font-semibold tracking-wider">
-            {product.brand?.name || product.brand}
-          </span>
-          {totalSold > 0 && (
-            <span className="inline-flex items-center text-[11px] font-semibold px-2 py-0.5 rounded-pill bg-orange-50 text-[#EA580C] border border-orange-100">
-              {totalSold}+ sold 🔥
-            </span>
-          )}
-        </div>
-
-        {/* Product Name */}
-        <h3 className="font-semibold text-[15px] text-[#18181B] leading-snug line-clamp-2 mb-2 group-hover:text-[#4B1FD6] transition-colors">
-          {product.name}
-        </h3>
-
-        {/* Starting Price */}
-        <div className="mt-auto pt-2">
-          <div className="text-sm font-semibold text-[#4B1FD6]">
-            from {formatINR(minPrice)}
-          </div>
-          <div className="text-[13px] text-[#16A34A] font-medium mt-0.5">
-            No-cost EMIs upto 12 months
-          </div>
-        </div>
+      {/* Top Image Area */}
+      <div className="bg-gray-50 p-6 h-44 flex items-center justify-center border-b border-gray-200">
+        <img
+          src={primaryVariant.imageUrl}
+          alt={product.name}
+          className="w-full h-full object-contain"
+          loading="lazy"
+          onError={(e) => {
+            e.target.onerror = null;
+            const colors = BRAND_COLORS[brandName] || { bg: '5b21b6', fg: 'ffffff' };
+            e.target.src = `https://placehold.co/600x600/${colors.bg}/${colors.fg}?text=${encodeURIComponent((product.name || 'Phone').split(' ').slice(0, 3).join('+'))}`;
+          }}
+        />
       </div>
 
-      {/* Action CTA */}
-      <div className="p-4 pt-0">
+      {/* Bottom Info Area */}
+      <div className="p-6 flex flex-col flex-1 justify-between">
+        <div>
+          <h3 className="text-base font-semibold text-gray-900 line-clamp-1">
+            {product.name}
+          </h3>
+
+          <div className="flex items-center justify-between mt-1">
+            <p className="text-sm text-gray-600">
+              from {formatINR(minPrice)}
+            </p>
+
+            {/* Variant indicator */}
+            {uniqueColors.length > 0 && (
+              <div className="flex items-center gap-1" title={`${uniqueColors.length} colors available`}>
+                <div className="flex items-center -space-x-1">
+                  {uniqueColors.slice(0, 3).map(([colorName, colorHex], i) => (
+                    <span
+                      key={i}
+                      className="w-2.5 h-2.5 rounded-full border border-white shadow-2xs"
+                      style={{ backgroundColor: colorHex }}
+                    />
+                  ))}
+                </div>
+                <span className="text-[11px] text-gray-400 ml-1">
+                  {uniqueColors.length} {uniqueColors.length === 1 ? 'color' : 'colors'}
+                </span>
+              </div>
+            )}
+          </div>
+
+          <p className="text-xs text-gray-400 mt-1">
+            0% EMI · upto 12 months
+          </p>
+        </div>
+
         <Link
           to={`/products/${product.slug}`}
-          className="flex items-center justify-center w-full h-10 bg-[#4B1FD6] hover:bg-[#3B0764] text-white font-semibold text-sm rounded-pill shadow-sm transition-colors active:scale-[0.98]"
+          className="mt-4 w-full bg-brand hover:opacity-95 text-white font-medium text-sm rounded-btn h-10 flex items-center justify-center transition-opacity"
         >
           View Plans
         </Link>

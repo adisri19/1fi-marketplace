@@ -9,26 +9,32 @@ export default function TabSwitcher({ activeTab, onTabChange }) {
 
   return (
     <div className="flex items-center justify-center my-6">
-      <div className="inline-flex p-1 bg-white border border-[#E4E4E7] rounded-pill shadow-sm max-w-full overflow-x-auto">
+      <div className="inline-flex p-1 bg-white border border-gray-200 rounded-pill max-w-full overflow-x-auto">
         {tabs.map((tab) => {
           const isActive = activeTab === tab.id;
+          const isMarketplace = tab.id === '1fi-marketplace';
+
           return (
             <button
               key={tab.id}
+              type="button"
               onClick={() => onTabChange(tab.id)}
-              className={`px-4 sm:px-6 py-2 rounded-pill text-xs sm:text-sm font-semibold transition-all whitespace-nowrap ${
+              className={`px-4 sm:px-6 py-2 rounded-pill text-sm transition-all whitespace-nowrap ${
                 isActive
-                  ? 'bg-[#4B1FD6] text-white shadow-md shadow-[#4B1FD6]/20'
-                  : 'text-zinc-500 hover:text-zinc-800 hover:bg-zinc-50'
+                  ? `bg-white ${isMarketplace ? 'text-brand' : 'text-gray-900'} font-medium shadow-sm`
+                  : 'text-gray-500 hover:text-gray-900 font-normal'
               }`}
             >
-              {tab.label}
-              {tab.id === '1fi-marketplace' && (
-                <span className={`ml-1.5 text-[10px] px-1.5 py-0.2 rounded-full uppercase tracking-wider font-bold ${
-                  isActive ? 'bg-white/20 text-white' : 'bg-violet-100 text-[#4B1FD6]'
-                }`}>
-                  Live
+              {isMarketplace ? (
+                <span className="flex items-center gap-1.5">
+                  {tab.label}
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500" />
+                  </span>
                 </span>
+              ) : (
+                tab.label
               )}
             </button>
           );

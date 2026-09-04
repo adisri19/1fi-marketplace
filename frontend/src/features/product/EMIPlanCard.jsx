@@ -1,6 +1,5 @@
 import React from 'react';
 import { formatINR } from '../../utils/formatCurrency';
-import Badge from '../../components/ui/Badge';
 
 export default function EMIPlanCard({ plan, isSelected, onSelect }) {
   const handleKeyDown = (e) => {
@@ -17,54 +16,52 @@ export default function EMIPlanCard({ plan, isSelected, onSelect }) {
       tabIndex={0}
       onClick={() => onSelect(plan.id)}
       onKeyDown={handleKeyDown}
-      className={`cursor-pointer rounded-xl p-4 transition-all duration-150 flex items-center justify-between gap-4 outline-none ${
+      className={`bg-white rounded-xl border p-4 cursor-pointer hover:bg-gray-50 outline-none flex items-center justify-between gap-4 transition-[border-color] duration-100 ${
         isSelected
-          ? 'bg-[#EDE9FE] border-2 border-[#4B1FD6] shadow-sm'
-          : 'bg-white border border-[#E4E4E7] hover:border-[#DDD6FE] hover:bg-violet-50/30'
+          ? 'border-gray-200 border-l-4 border-l-brand'
+          : 'border-gray-200'
       }`}
     >
       {/* Left side: Radio indicator and details */}
-      <div className="flex items-center gap-3.5">
+      <div className="flex items-center gap-3">
         {/* Radio Circle */}
         <div
-          className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${
+          className={`w-[18px] h-[18px] rounded-full flex items-center justify-center shrink-0 ${
             isSelected
-              ? 'border-[#4B1FD6] bg-[#4B1FD6]'
-              : 'border-zinc-300 bg-white'
+              ? 'bg-brand'
+              : 'border border-gray-200 bg-white'
           }`}
         >
           {isSelected && (
-            <div className="w-2 h-2 rounded-full bg-white" />
+            <div className="w-1.5 h-1.5 rounded-full bg-white" />
           )}
         </div>
 
         <div>
-          <div className="text-[16px] font-bold text-zinc-900 leading-tight">
-            {formatINR(plan.monthlyAmount)} × {plan.tenureMonths} months
+          <div className="text-sm font-medium text-gray-900 leading-tight">
+            <span>{formatINR(plan.monthlyAmount)} / mo × {plan.tenureMonths} months</span>
+            {plan.isPopular && (
+              <span className="text-xs text-brand font-normal ml-1">· Recommended</span>
+            )}
           </div>
           {plan.cashback && plan.cashback > 0 && (
-            <div className="text-xs font-semibold text-[#16A34A] mt-1 flex items-center gap-1">
-              <span>✦</span> Additional cashback of {formatINR(plan.cashback)}
-            </div>
+            <p className="text-xs text-gray-400 mt-0.5">
+              + {formatINR(plan.cashback)} cashback
+            </p>
           )}
         </div>
       </div>
 
-      {/* Right side: Badges */}
-      <div className="flex flex-col items-end gap-1.5 shrink-0">
-        {plan.isPopular && (
-          <Badge variant="recommended">
-            RECOMMENDED
-          </Badge>
-        )}
+      {/* Right side: Interest rate */}
+      <div className="shrink-0 text-right">
         {plan.interestRate === 0 ? (
-          <Badge variant="orange">
-            0% EMI
-          </Badge>
+          <span className="text-xs text-success font-medium">
+            0% interest
+          </span>
         ) : (
-          <Badge variant="gray">
-            {plan.interestRate}% EMI
-          </Badge>
+          <span className="text-xs text-warning font-medium">
+            {plan.interestRate}% interest
+          </span>
         )}
       </div>
     </div>

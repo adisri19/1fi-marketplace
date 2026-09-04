@@ -22,7 +22,6 @@ export default function VariantSelector({
   );
 
   const handleColorChange = (colorName) => {
-    // Try to find variant with chosen color and currently selected storage
     const match =
       variants.find(
         (v) => v.color === colorName && v.storage === selectedVariant.storage
@@ -31,7 +30,6 @@ export default function VariantSelector({
   };
 
   const handleStorageChange = (storageSize) => {
-    // Try to find variant with chosen storage and currently selected color
     const match =
       variants.find(
         (v) => v.storage === storageSize && v.color === selectedVariant.color
@@ -40,14 +38,12 @@ export default function VariantSelector({
   };
 
   return (
-    <div className="space-y-5 py-2">
+    <div className="space-y-5">
       {/* Color selector */}
       {colors.length > 0 && (
         <div>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">
-              Color: <span className="text-zinc-900 font-bold normal-case">{selectedVariant.color}</span>
-            </span>
+          <div className="text-xs text-gray-400 uppercase tracking-wide mb-2.5">
+            Color
           </div>
           <div className="flex items-center gap-3">
             {colors.map((c) => {
@@ -58,16 +54,16 @@ export default function VariantSelector({
                   type="button"
                   onClick={() => handleColorChange(c.name)}
                   title={c.name}
-                  className={`relative w-8 h-8 rounded-full transition-transform active:scale-95 flex items-center justify-center ${
+                  className={`relative w-7 h-7 rounded-full transition-transform flex items-center justify-center ${
                     isActive
-                      ? 'ring-2 ring-[#4B1FD6] ring-offset-2 scale-110'
-                      : 'hover:scale-105 opacity-90 hover:opacity-100'
+                      ? 'ring-2 ring-brand ring-offset-2'
+                      : 'hover:opacity-80'
                   }`}
                   aria-label={`Select color ${c.name}`}
                   aria-pressed={isActive}
                 >
                   <span
-                    className="w-full h-full rounded-full border border-black/10 shadow-inner"
+                    className="w-full h-full rounded-full border border-black/10"
                     style={{ backgroundColor: c.hex }}
                   />
                 </button>
@@ -80,10 +76,8 @@ export default function VariantSelector({
       {/* Storage selector */}
       {storages.length > 0 && (
         <div>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-semibold text-zinc-500 uppercase tracking-wider">
-              Storage: <span className="text-zinc-900 font-bold normal-case">{selectedVariant.storage}</span>
-            </span>
+          <div className="text-xs text-gray-400 uppercase tracking-wide mb-2.5">
+            Storage
           </div>
           <div className="flex items-center gap-2.5 flex-wrap">
             {storages.map((storage) => {
@@ -93,10 +87,10 @@ export default function VariantSelector({
                   key={storage}
                   type="button"
                   onClick={() => handleStorageChange(storage)}
-                  className={`px-4 py-2 rounded-pill text-xs font-bold transition-all shadow-sm ${
+                  className={`px-4 py-2 rounded-pill text-xs transition-colors ${
                     isActive
-                      ? 'bg-[#4B1FD6] text-white shadow-[#4B1FD6]/20'
-                      : 'bg-white text-zinc-700 border border-[#E4E4E7] hover:border-zinc-400'
+                      ? 'bg-brand text-white font-medium'
+                      : 'bg-white text-gray-600 border border-gray-200 hover:border-gray-400 font-normal'
                   }`}
                   aria-pressed={isActive}
                 >
